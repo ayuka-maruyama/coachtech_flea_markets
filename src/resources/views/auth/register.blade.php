@@ -8,7 +8,7 @@
 <div class="register-area">
     <h1 class="ttl">会員登録</h1>
     <div class="register-form">
-        <form action="/register" method="post">
+        <form action="{{ route('register.store') }}" method="post">
             @csrf
             <div class="form-group">
                 <label class="label" for="name">ユーザー名</label>
