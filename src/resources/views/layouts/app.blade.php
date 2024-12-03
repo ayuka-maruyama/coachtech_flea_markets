@@ -18,8 +18,7 @@
             </a>
         </div>
 
-        @if(!Request::is('register') && !Request::is('login'))
-        <div class="search-bar">
+        @if(!in_array(Request::path(), ['register', 'login', 'email/verify'])) <div class="search-bar">
             <form action="/search" method="get">
                 <input class="input-area" type="text" name="q" placeholder="なにをお探しですか？" value="{{ request('q') }}">
             </form>
@@ -56,7 +55,7 @@
 
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('js')
-    
+
 </body>
 
 </html>
