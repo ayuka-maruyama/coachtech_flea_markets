@@ -39,7 +39,7 @@
             </div>
             <div class="form-group">
                 <label class="label" for="password_confirmation">確認用パスワード</label>
-                <input class="form-input" id="password_confirmation" name="password_confirmation">
+                <input class="form-input" id="password_confirmation" type="password" name="password_confirmation">
                 <div class="error">
                     @error('password_confirmation')
                     <p>{{ $message }}</p>
