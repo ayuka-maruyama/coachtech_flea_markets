@@ -12,7 +12,7 @@
             @csrf
             <div class="form-group">
                 <label class="label" for="name">ユーザー名</label>
-                <input class="form-input" id="name" type="text" name="name">
+                <input class="form-input" id="name" type="text" name="name" value="{{ old('name') }}">
                 <div class="error">
                     @error('name')
                     <p>{{ $message }}</p>
@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label class="label" for="email">メールアドレス</label>
-                <input class="form-input" id="email" type="email" name="email">
+                <input class="form-input" id="email" type="email" name="email" value="{{ old('email') }}">
                 <div class="error">
                     @error('email')
                     <p>{{ $message }}</p>
@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label class="label" for="password">パスワード</label>
-                <input class="form-input" id="password" type="password" name="password">
+                <input class="form-input" id="password" type="password" name="password" value="{{ old('password') }}">
                 <div class="error">
                     @error('password')
                     <p>{{ $message }}</p>
