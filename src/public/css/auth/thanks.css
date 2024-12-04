@@ -1,0 +1,46 @@
+.thanks-area {
+    width: 300px;
+    margin: 40px auto;
+}
+
+.thanks-ttl {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.thanks-msg {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* タブレットサイズのレスポンシブ */
+@media screen and (min-width: 481px) {
+    .thanks-area {
+        width: 450px;
+    }
+
+    .thanks-ttl {
+        font-size: 20px;
+    }
+
+    .thanks-msg {
+        font-size: 18px;
+    }
+}
+
+/* デスクトップサイズのレスポンシブ */
+@media screen and (min-width: 768px) {
+    .thanks-area {
+        width: 550px;
+    }
+
+    .thanks-ttl {
+        font-size: 22px;
+    }
+
+    .thanks-msg {
+        font-size: 20px;
+    }
+}
