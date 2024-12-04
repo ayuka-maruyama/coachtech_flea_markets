@@ -18,7 +18,7 @@
             </a>
         </div>
 
-        @if(!in_array(Request::path(), ['register', 'login', 'email/verify'])) <div class="search-bar">
+        @if(!in_array(Request::path(), ['register', 'login', 'thanks', 'email/verify'])) <div class="search-bar">
             <form action="/search" method="get">
                 <input class="input-area" type="text" name="q" placeholder="なにをお探しですか？" value="{{ request('q') }}">
             </form>
