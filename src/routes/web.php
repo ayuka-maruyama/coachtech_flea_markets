@@ -3,24 +3,28 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/', function () {
     return view('layouts/app');
 });
 
-Route::get('/register', function () {
-    return view('auth/register');
-});
+// 新規登録
+Route::get('/register', [RegisterController::class, 'open'])->name('register.open');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+Route::get('/thanks', function () {
+    return view('auth.thanks');
+})->name('register.thanks');
 
 // メール確認通知の表示ルート
 Route::get('/email/verify', function () {
-    return view('auth.verify-email'); // カスタムビュー
-})->middleware(['auth'])->name('verification.notice');
+    return view('auth.verify-email');
+})->middleware(['auth', 'verified'])->name('verification.notice');
 
 // メール確認処理ルート
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill(); // メール認証を完了する
-    return redirect('/'); // 認証後のリダイレクト先
+    $request->fulfill();
+    return redirect('/');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 // 再送信ルート
