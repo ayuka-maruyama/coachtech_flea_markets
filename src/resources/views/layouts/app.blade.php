@@ -27,7 +27,7 @@
         <nav class="nav">
             <ul>
                 @if(Auth::check())
-                <form action="/logout" method="post">
+                <form action="{{ route('logout') }}" method="post">
                     @csrf
                     <li class="logout">
                         <button class="nav-btn" type="submit">ログアウト</button>
@@ -35,7 +35,7 @@
                 </form>
                 @else
                 <li class="login">
-                    <a href="/login" class="nav-btn">ログイン</a>
+                    <a href="{{ route('login') }}" class="nav-btn">ログイン</a>
                 </li>
                 @endif
                 <li class="my-page">
