@@ -55,6 +55,7 @@
 
     .ttl {
         font-size: 20px;
+        margin-bottom: 40px;
     }
 }
 
@@ -67,5 +68,6 @@
 
     .ttl {
         font-size: 24px;
+        margin-bottom: 50px;
     }
 }
