@@ -1,0 +1,27 @@
+.login-area {
+    width: 300px;
+    margin: 60px auto;
+    font-size: 12px;
+}
+
+.register-link {
+    margin-top: 15px;
+    color: #008cff;
+    text-align: center;
+}
+
+/* タブレットサイズのレスポンシブ */
+@media screen and (min-width: 481px) {
+    .login-area {
+        width: 350px;
+        font-size: 16px;
+    }
+}
+
+/* デスクトップサイズのレスポンシブ */
+@media screen and (min-width: 768px) {
+    .login-area {
+        width: 600px;
+        font-size: 20px;
+    }
+}
