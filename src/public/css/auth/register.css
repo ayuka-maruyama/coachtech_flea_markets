@@ -4,13 +4,6 @@
     font-size: 12px;
 }
 
-.ttl {
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 30px;
-}
-
 .form-group {
     margin-bottom: 20px;
 }
@@ -52,11 +45,6 @@
         width: 350px;
         font-size: 16px;
     }
-
-    .ttl {
-        font-size: 20px;
-        margin-bottom: 40px;
-    }
 }
 
 /* デスクトップサイズのレスポンシブ */
@@ -64,10 +52,5 @@
     .register-area {
         width: 600px;
         font-size: 20px;
-    }
-
-    .ttl {
-        font-size: 24px;
-        margin-bottom: 50px;
     }
 }

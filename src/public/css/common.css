@@ -62,6 +62,13 @@
     color: red;
 }
 
+.ttl {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
 /* タブレットサイズのレスポンシブ */
 @media screen and (min-width: 481px) {
     .search-bar {
@@ -72,6 +79,11 @@
     .nav {
         width: 40%;
         font-size: 11px;
+    }
+
+    .ttl {
+        font-size: 20px;
+        margin-bottom: 40px;
     }
 }
 
@@ -108,4 +120,10 @@
     .exhibit {
         padding: 10px 20px;
     }
+
+    .ttl {
+        font-size: 24px;
+        margin-bottom: 50px;
+    }
+
 }
