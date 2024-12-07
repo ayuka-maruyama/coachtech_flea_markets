@@ -1,0 +1,93 @@
+.profile-area {
+    width: 300px;
+    margin: 40px auto;
+    font-size: 12px;
+}
+
+.profile-form {
+    margin:  10px 20px;
+}
+
+.img-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0 20px;
+}
+
+.preview-area {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 1px solid rgb(158, 157, 157);
+    background-color: rgb(158, 157, 157);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; 
+}
+
+.image-preview {
+    display: none;
+    width: 90%;
+}
+
+.file-upload {
+    display: inline-block;
+    cursor: pointer;
+    color: #FF5555;
+    border: 2px solid #FF5555;
+    border-radius: 5px;
+    padding: 5px 15px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-input {
+    width: 100%;
+    border: 1px solid #919191;
+    border-radius: 3px;
+    padding: 5px 10px;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: #FF5555;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+/* タブレットサイズのレスポンシブ */
+@media screen and (min-width: 481px) {
+    .profile-area {
+        width: 350px;
+        font-size: 16px;
+    }
+
+    .preview-area {
+        width: 65px;
+        height: 65px;
+    }
+}
+
+/* デスクトップサイズのレスポンシブ */
+@media screen and (min-width: 768px) {
+    .profile-area {
+        width: 600px;
+        font-size: 20px;
+    }
+    
+    .preview-area {
+        width: 90px;
+        height: 90px;
+    }
+}
