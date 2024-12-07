@@ -9,8 +9,8 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 
 // view作成用。あとで削除する
-Route::get('/mypage', function () {
-    return view('mypage');
+Route::get('/', function () {
+    return view('layouts.app');
 });
 
 // 新規登録
@@ -40,7 +40,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // マイページ遷移
 Route::middleware('auth', 'verified')->group(function () {
-    Route::get('/mypage', function () {
-        return view('mypage');
-    })->name('mypage');
+    Route::get('/mypage/profile', function () {
+        return view('profile');
+    })->name('profile');
 });
