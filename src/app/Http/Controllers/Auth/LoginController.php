@@ -19,14 +19,19 @@ class LoginController extends Controller
         if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
             $user = Auth::user();
-            return redirect('/mypage');
+
+            // email_verified_at の確認
+            if ($user->email_verified_at) {
+                return redirect('/mypage');
+            } else {
+                return redirect('/email/verify');
+            }
         }
 
         return back()->withErrors([
             'email' => 'ログイン情報が登録されていません',
         ]);
     }
-
     public function logout(Request $request)
     {
         Auth::logout();
