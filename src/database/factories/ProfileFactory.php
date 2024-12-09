@@ -16,6 +16,7 @@ class ProfileFactory extends Factory
             ->inRandomOrder()
             ->first();
 
+        // 利用可能なユーザーがいない場合、新しいユーザーを作成
         if (!$unusedUserId) {
             $unusedUserId = User::factory()->create();
         }

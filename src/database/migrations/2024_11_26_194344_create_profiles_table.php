@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('postal_number');
             $table->string('address');
             $table->string('building');
-            $table->string('profile_image');
+            $table->string('profile_image')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();
         });
