@@ -6,9 +6,14 @@
 
 @section('content')
 <div class="profile-area">
+    @if(session('error'))
+    <div class="alert alert-error" id="error-message">
+        {{ session('error') }}
+    </div>
+    @endif
     <h1 class="ttl">プロフィール設定</h1>
     <div class="profile-form">
-        <form action="{{ route('register.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('profile.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="img-area">
                 <div id="preview-area" class="preview-area">
@@ -18,7 +23,12 @@
                 <label for="image" class="file-upload">
                     画像を選択
                 </label>
-                <input type="file" name="image" id="image" style="display: none;">
+                <input type="file" name="profile_image" id="image" style="display: none;">
+                <div class="error">
+                    @error('profile_image')
+                    <p>{{ $message }}</p>
+                    @enderror
+                </div>
             </div>
             <div class="form-group">
                 <label class="label" for="profile_name">ユーザー名</label>
