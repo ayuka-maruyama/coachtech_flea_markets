@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -40,7 +41,6 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // マイページ遷移
 Route::middleware('auth', 'verified')->group(function () {
-    Route::get('/mypage/profile', function () {
-        return view('profile');
-    })->name('profile');
+    Route::get('/mypage/profile', [ProfileController::class, 'open'])->name('profile');
+    Route::post('/mypage/profile', [ProfileController::class, 'store'])->name('profile.store');
 });
