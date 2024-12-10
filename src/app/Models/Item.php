@@ -10,7 +10,7 @@ class Item extends Model
     use HasFactory;
 
     protected $table = 'items';
-    protected $fillable = ['item_name', 'brand', 'price', 'description', 'condition', 'item_image'];
+    protected $fillable = ['item_name', 'brand', 'price', 'description', 'condition', 'item_image', 'stock_status', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 
     public function favorites()
@@ -31,5 +31,10 @@ class Item extends Model
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'category_item', 'item_id', 'category_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
