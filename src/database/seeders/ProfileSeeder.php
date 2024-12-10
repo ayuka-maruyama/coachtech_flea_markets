@@ -11,6 +11,15 @@ class ProfileSeeder extends Seeder
 {
     public function run(): void
     {
-        Profile::factory()->count(2)->create();
+
+        // ランダムな3件のユーザーを取得
+        $users = User::take(3)->get();
+
+        // 各ユーザーに対してプロファイルを生成
+        $users->each(function ($user) {
+            Profile::factory()->create([
+                'user_id' => $user->id, // 各ユーザーに紐づくプロファイルを生成
+            ]);
+        });
     }
 }
