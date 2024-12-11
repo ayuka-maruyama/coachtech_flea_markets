@@ -33,7 +33,7 @@ class LoginController extends Controller
             }
 
             // 上記条件がすべて不一致の場合
-            return redirect('/mypage');
+            return redirect('/');
         }
 
         return back()->withErrors([
