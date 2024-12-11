@@ -13,12 +13,14 @@
 <body>
     <header class="header">
         <div class="log">
-            <a href="{{ url('/') }}"> <!-- controller作成、web.php記述後、urlの部分をroute('home')に修正する -->
+            <a href="{{ route('home') }}"> <!-- controller作成、web.php記述後、urlの部分をroute('home')に修正する -->
                 <img class="log-img" src="{{ asset('image/logo.svg') }}" alt="logo">
             </a>
         </div>
 
-        @if(!in_array(Request::path(), ['register', 'login', 'thanks', 'email/verify'])) <div class="search-bar">
+        @if(!in_array(Request::path(), ['register', 'login', 'thanks', 'email/verify']))
+
+        <div class="search-bar">
             <form action="/search" method="get">
                 <input class="input-area" type="text" name="q" placeholder="なにをお探しですか？" value="{{ request('q') }}">
             </form>
@@ -46,6 +48,7 @@
                 </li>
             </ul>
         </nav>
+
         @endif
     </header>
 
