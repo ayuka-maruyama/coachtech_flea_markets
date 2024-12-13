@@ -7,8 +7,11 @@
 @section('content')
 <div class="item-content">
     <div class="tab">
-        <a href="{{ route('home') }}" class="suggest-item @if(Request::fullUrl() == url('/')) span @endif">おすすめ</a>
-        <a href="/?tab=mylist" class="my-list @if(Request::query('tab') == 'mylist') span @endif">マイリスト</a>
+        <a href="{{ route('home') }}" class="suggest-item @if(Request::path() == '/' && !Request::query('tab')) span @endif">おすすめ</a>
+        <a href="/?tab=mylist{{ request('q') ? '&q=' . request('q') : '' }}"
+            class="my-list @if(Request::query('tab') == 'mylist') span @endif">
+            マイリスト
+        </a>
     </div>
     <div class="item-card">
         @foreach($items as $item)

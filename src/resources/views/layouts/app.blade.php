@@ -22,7 +22,7 @@
 
         <div class="search-bar">
             <form action="/search" method="get">
-                <input class="input-area" type="text" name="q" placeholder="なにをお探しですか？" value="{{ request('q') }}">
+                <input class="input-area" type="text" name="q" id="item-name" placeholder="なにをお探しですか？" value="{{ request('q') }}">
             </form>
         </div>
 
