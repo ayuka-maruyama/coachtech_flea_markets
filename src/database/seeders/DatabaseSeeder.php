@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ProfileSeeder::class,
             ItemSeeder::class,
+            CommentSeeder::class,
         ]);
     }
 }
