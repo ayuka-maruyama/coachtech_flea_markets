@@ -10,6 +10,10 @@ class Item extends Model
     use HasFactory;
 
     protected $table = 'items';
+    protected $primaryKey = 'item_id';
+    public $incrementing = true;
+    protected $keyType = 'int';
+
     protected $fillable = ['item_name', 'brand', 'price', 'description', 'condition', 'item_image', 'stock_status', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 

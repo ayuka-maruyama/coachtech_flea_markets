@@ -10,6 +10,10 @@ class Favorite extends Model
     use HasFactory;
 
     protected $table = 'favorites';
+    protected $primaryKey = 'favorite_id';
+    public $incrementing = true;
+    protected $keyType = 'int';
+
     protected $fillable = ['item_id', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 

@@ -10,6 +10,10 @@ class Category extends Model
     use HasFactory;
 
     protected $table = 'categories';
+    protected $primaryKey = 'category_id';
+    public $incrementing = true;
+    protected $keyType = 'int';
+
     protected $fillable = ['category_name'];
     protected $dates = ['created_at', 'updated_at'];
 
