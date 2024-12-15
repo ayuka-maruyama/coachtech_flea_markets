@@ -16,4 +16,9 @@ class Comment extends Model
 
     protected $fillable = ['comment_id', 'profile_id', 'item_id', 'comment'];
     protected $dates = ['created_at', 'updated_at'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
