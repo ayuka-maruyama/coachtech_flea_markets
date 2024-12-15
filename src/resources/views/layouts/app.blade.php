@@ -10,10 +10,10 @@
     <title>COACHTECHフリマ</title>
 </head>
 
-<body>
-    <header class="header">
+<body data-is-logged-in="{{ Auth::check() ? 'true' : 'false' }}">
+    <header class=" header">
         <div class="log">
-            <a href="{{ route('home') }}"> <!-- controller作成、web.php記述後、urlの部分をroute('home')に修正する -->
+            <a href="{{ route('home') }}">
                 <img class="log-img" src="{{ asset('image/logo.svg') }}" alt="logo">
             </a>
         </div>
