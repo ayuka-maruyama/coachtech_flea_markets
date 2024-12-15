@@ -11,10 +11,17 @@ class CommentFactory extends Factory
 {
     public function definition(): array
     {
+        $phrases = [
+            "とてもおすすめです。",
+            "おすすめできません。",
+            "詳しい商品情報を教えてほしい",
+            "発送までが早かったので助かりました",
+        ];
+
         return [
             'user_id' => User::whereBetween('user_id', [1, 4])->inRandomOrder()->value('user_id'),
             'item_id' => Item::inRandomOrder()->value('item_id'),
-            'comment' => fake()->realText(20),
+            'comment' => fake()->randomElement($phrases),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
