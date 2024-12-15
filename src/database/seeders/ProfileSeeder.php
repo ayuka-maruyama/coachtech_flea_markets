@@ -18,7 +18,7 @@ class ProfileSeeder extends Seeder
         // 各ユーザーに対してプロファイルを生成
         $users->each(function ($user) {
             Profile::factory()->create([
-                'user_id' => $user->id, // 各ユーザーに紐づくプロファイルを生成
+                'user_id' => $user->user_id,
             ]);
         });
     }
