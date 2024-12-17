@@ -19,13 +19,13 @@ class ItemController extends Controller
 
         if ($tab === 'suggest') {
             if ($user) {
-                $items = Item::where('user_id', '!=', $user->id)->get();
+                $items = Item::where('user_id', '!=', $user->user_id)->get();
             } else {
                 $items = Item::all();
             }
         } elseif ($tab === 'mylist') {
             if ($user) {
-                $favoriteItemIds = Favorite::where('user_id', $user->id)->pluck('item_id');
+                $favoriteItemIds = Favorite::where('user_id', $user->user_id)->pluck('item_id');
                 $items = Item::whereIn('item_id', $favoriteItemIds)->get();
             }
         }

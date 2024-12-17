@@ -20,7 +20,7 @@ class LoginController extends Controller
         if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
             $user = Auth::user();
-            $profile = Profile::where('user_id', $user->id)->first();
+            $profile = Profile::where('user_id', $user->user_id)->first();
 
             // email_verified_at の確認
             if (!$user->email_verified_at) {
