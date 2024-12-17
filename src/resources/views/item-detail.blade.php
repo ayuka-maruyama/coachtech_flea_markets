@@ -40,7 +40,7 @@
 
         </div>
 
-        <form action="/purchase/{item_id}" method="post">
+        <form action="{{ route('purchase', ['item_id' => $item->item_id]) }}" method="post">
             @csrf
             <input type="hidden" name="item_id" value="{{ $item->item_id }}">
             <button type="submit" class="submit">購入手続きへ</button>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ItemDetailController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PurchaseController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -47,6 +48,9 @@ Route::middleware(['auth', 'throttle:6,1'])->group(function () {
 
 // ログアウト
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// 商品購入
+Route::post('/purchase/{item_id}', [PurchaseController::class, 'open'])->name('purchase');
 
 // マイページ遷移
 Route::middleware('auth', 'verified')->group(function () {
