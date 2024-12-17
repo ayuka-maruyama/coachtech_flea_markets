@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CommentRequest;
-use Illuminate\Http\Request;
+use App\Models\CategoryItem;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\Favorite;
@@ -15,12 +16,15 @@ class ItemDetailController extends Controller
     {
         $item = Item::findOrFail($item_id);
 
+        $categories = CategoryItem::where('item_id', $item_id)->pluck('category_id');
+        $categories = Category::whereIn('category_id', $categories)->get();
+
         $comments = Comment::with(['user.profile'])->where('item_id', $item_id)->get();
 
         $favoriteCount = Favorite::where('item_id', $item_id)->count();
         $commentCount = $comments->count();
 
-        return view('item-detail', compact('item', 'favoriteCount', 'commentCount', 'comments'));
+        return view('item-detail', compact('item', 'categories', 'favoriteCount', 'commentCount', 'comments'));
     }
 
     public function comment(CommentRequest $request, $item_id)

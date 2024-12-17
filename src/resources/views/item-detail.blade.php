@@ -55,8 +55,9 @@
             <h2 class="info-ttl">商品の情報</h2>
             <div class="category">
                 <h3 class="category-ttl">カテゴリー</h3>
-                <!-- 複数カテゴリーが選択される可能性があるため、foreachを使用する -->
-                <p class="select-category">食品</p>
+                @foreach ($categories as $category)
+                <p class="select-category">{{ $category->category_name }}</p>
+                @endforeach
             </div>
             <div class="condition">
                 <h3 class="condition-ttl">商品の状態</h3>
