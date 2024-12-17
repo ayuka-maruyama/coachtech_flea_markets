@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
             ProfileSeeder::class,
             ItemSeeder::class,
             CommentSeeder::class,
+            CategorySeeder::class,
+            CategoryItemSeeder::class,
         ]);
     }
 }
