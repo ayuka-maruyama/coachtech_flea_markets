@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ItemDetailController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +18,10 @@ use Illuminate\Http\Request;
 
 // ホーム画面
 Route::get('/', [ItemController::class, 'index'])->name('home');
+Route::get('/item/{item_id}', [ItemDetailController::class, 'open'])->name('detail.open');
+Route::post('/item/{item_id}', [ItemDetailController::class, 'open'])->name('detail.open');
+Route::post('/item/{item_id}/comment', [ItemDetailController::class, 'comment'])->name('comment');
+
 
 // 新規登録
 Route::get('/register', [RegisterController::class, 'open'])->name('register.open');
