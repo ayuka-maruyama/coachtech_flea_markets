@@ -13,7 +13,7 @@ class ProfileSeeder extends Seeder
     {
 
         // ランダムな3件のユーザーを取得
-        $users = User::take(3)->get();
+        $users = User::take(4)->get();
 
         // 各ユーザーに対してプロファイルを生成
         $users->each(function ($user) {
