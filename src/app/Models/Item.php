@@ -19,7 +19,7 @@ class Item extends Model
 
     public function favorites()
     {
-        return $this->hasMany(Favorite::class);
+        return $this->hasMany(Favorite::class, 'item_id');
     }
 
     public function order()
