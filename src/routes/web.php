@@ -52,6 +52,9 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // 商品購入
 Route::post('/purchase/{item_id}', [PurchaseController::class, 'open'])->name('purchase');
 
+// お気に入り登録
+Route::post('/favorite/toggle/{item_id}', [ItemDetailController::class, 'toggle'])->name('favorite.toggle');
+
 // マイページ遷移
 Route::middleware('auth', 'verified')->group(function () {
     Route::get('/mypage/profile', [ProfileController::class, 'open'])->name('profile');
