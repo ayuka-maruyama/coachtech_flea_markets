@@ -30,6 +30,13 @@ class ProfileController extends Controller
         // バリデーション済みのデータを取得
         $addressData = $addressRequest->validated();
         $profileData = $profileRequest->validated();
+        
+        // 郵便番号にハイフンを自動挿入
+        $addressData['postal_number'] = preg_replace(
+            '/^(\d{3})(\d{4})$/',
+            '$1-$2',
+            str_replace('-', '', $addressData['postal_number']) // ハイフンを一度除去
+        );
 
         // プロフィール画像の保存処理
         if ($profileRequest->hasFile('profile_image')) {

@@ -15,7 +15,7 @@ class AddressRequest extends FormRequest
     {
         return [
             'profile_name' => 'required|string|max:255',
-            'postal_number' => ['required', 'string', 'regex:/^\d{7}$|^\d{3}-\d{4}$/'],
+            'postal_number' => 'required|string|regex:/^\d{7}$/',
             'address' => 'required|string|max:255',
             'building' => 'required|string|max:255',
         ];
