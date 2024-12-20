@@ -5,12 +5,6 @@
 @endsection
 
 @section('content')
-@if (session('success'))
-<div class="alert alert-success">
-    {{ session('success') }}
-</div>
-@endif
-
 <div class="detail-flex">
     <div class="item-img">
         <img class="card-img" src="{{ $item->item_image }}" alt="{{ $item->item_name }}">
@@ -71,7 +65,7 @@
             <div class="comment-area">
                 <div class="comment-flex">
                     @if ($comment->user->profile && $comment->user->profile->profile_image)
-                    <img class="profile-img" src="{{ $comment->user->profile->profile_image }}" alt="Profile Image">
+                    <img class="profile-img" src="{{ asset('storage/profile_images/' . $comment->user->profile->profile_image) }}" alt="Profile Image">
                     @else
                     <div class="profile-img default-profile-image"></div>
                     @endif

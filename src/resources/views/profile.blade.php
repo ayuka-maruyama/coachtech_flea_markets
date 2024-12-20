@@ -6,11 +6,6 @@
 
 @section('content')
 <div class="profile-area">
-    @if(session('error'))
-    <div class="alert alert-error" id="error-message">
-        {{ session('error') }}
-    </div>
-    @endif
     <h1 class="ttl">プロフィール設定</h1>
     <div class="profile-form">
         <form action="{{ route('profile.store') }}" method="post" enctype="multipart/form-data">
