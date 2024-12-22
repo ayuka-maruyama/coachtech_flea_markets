@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
@@ -16,13 +13,13 @@ return new class extends Migration
             $table->foreignId('item_id');
             $table->foreignId('user_id');
             $table->string('payment_method');
+            $table->string('postal_number');
+            $table->string('address');
+            $table->string('building');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('orders');
