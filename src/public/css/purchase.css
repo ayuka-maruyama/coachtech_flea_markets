@@ -1,0 +1,148 @@
+.purchase {
+    font-size: 12px;
+    margin: 25px 20px;
+}
+
+.item-info,
+.payment,
+.address {
+    border-bottom: 1px solid black;
+}
+
+.item-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+
+.item-img {
+    width: 25%;
+}
+
+.item {
+    width: 70%;
+}
+
+.item-name {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 15px;
+}
+
+.payment,
+.address {
+    padding: 20px;
+}
+
+.select {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    cursor: pointer; /* 選択エリアをクリック可能に */
+}
+
+.payment-ttl,
+.address-ttl {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.payment-select {
+    flex-grow: 1; /* select ボックスが残りのスペースを占有 */
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+    width: 50%;
+    margin-left: 10px; /* アイコンと間隔を開ける */
+    margin-bottom: 10px;
+}
+
+.payment-select:focus {
+    outline: none; /* フォーカスリングを非表示 */
+}
+
+.toggle {
+    width: 10px;
+    position: absolute;
+    top: 35%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none; /* SVG 内の不要なイベントを無効化 */
+}
+
+.address-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.address-change {
+    color: blue;
+}
+
+.profile-address {
+    font-weight: bold;
+    margin-left: 40px;
+}
+
+.purchase-view {
+    margin-top: 20px;
+}
+
+.price-view,
+.payment-method {
+    display: flex;
+    padding: 20px 15px;
+    align-items: center;
+    border: 1px solid gray;
+}
+
+.payment-method {
+    border-top: none;
+}
+
+.price-ttl,
+.method-ttl {
+    font-size: 12px;
+    width: 50%;
+    text-align: center;
+}
+
+.selected {
+    font-size: 12px;
+}
+
+.view-price.span {
+    font-size: 14px;
+}
+
+.purchase-btn {
+    width: 100%;
+    background-color: #FF5555;
+    color: white;
+    font-weight: bold;
+    padding: 5px 0;
+    text-align: center;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.purchase-btn.disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+/* タブレットサイズのレスポンシブ */
+@media screen and (min-width: 481px) {
+}
+
+/* デスクトップサイズのレスポンシブ */
+@media screen and (min-width: 768px) {
+}
