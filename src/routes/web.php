@@ -5,17 +5,13 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ItemDetailController;
+use App\Http\Controllers\ProfileChangeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
-
-// view作成用。あとで削除する
-// Route::get('/', function () {
-//     return view('layouts.app');
-// });
 
 // ホーム画面
 Route::get('/', [ItemController::class, 'index'])->name('home');
@@ -50,7 +46,10 @@ Route::middleware(['auth', 'throttle:6,1'])->group(function () {
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // 商品購入
-Route::post('/purchase/{item_id}', [PurchaseController::class, 'open'])->name('purchase');
+Route::get('/purchase/{item_id}', [PurchaseController::class, 'open'])->name('purchase');
+
+// 配送先変更
+Route::get('/purchase/address/{item_id}', [ProfileChangeController::class, 'open'])->name('profile.change');
 
 // お気に入り登録
 Route::post('/favorite/toggle/{item_id}', [ItemDetailController::class, 'toggle'])->name('favorite.toggle');
@@ -59,4 +58,5 @@ Route::post('/favorite/toggle/{item_id}', [ItemDetailController::class, 'toggle'
 Route::middleware('auth', 'verified')->group(function () {
     Route::get('/mypage/profile', [ProfileController::class, 'open'])->name('profile');
     Route::post('/mypage/profile', [ProfileController::class, 'store'])->name('profile.store');
+    Route::post('/purchase/order/{item_id}', [PurchaseController::class, 'store'])->name('purchase.store');
 });
