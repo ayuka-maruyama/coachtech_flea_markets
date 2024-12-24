@@ -1,0 +1,25 @@
+.change-area {
+    width: 300px;
+    margin: 40px auto;
+    font-size: 12px;
+}
+
+.submit-btn {
+    margin-top: 20px;
+}
+
+/* タブレットサイズのレスポンシブ */
+@media screen and (min-width: 481px) {
+    .change-area {
+        width: 350px;
+        font-size: 16px;
+    }
+}
+
+/* デスクトップサイズのレスポンシブ */
+@media screen and (min-width: 768px) {
+    .change-area {
+        width: 600px;
+        font-size: 20px;
+    }
+}
