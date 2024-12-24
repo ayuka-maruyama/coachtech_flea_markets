@@ -56,7 +56,8 @@
     font-size: 8px;
 }
 
-.submit {
+.purchase-btn,
+.purchase-btn.disabled {
     width: 100%;
     background-color: #FF5555;
     color: white;

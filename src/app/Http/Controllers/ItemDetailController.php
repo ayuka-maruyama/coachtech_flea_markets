@@ -10,48 +10,48 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\Favorite;
 use App\Models\Comment;
+use App\Models\Order;
+
 
 class ItemDetailController extends Controller
 {
     public function open($item_id)
     {
-        // アイテムとそのカテゴリを取得
         $item = Item::with('categories')->findOrFail($item_id);
 
-        // ユーザーが認証されているかチェック
         $user = Auth::user();
         $userId = null;
         $isFavorited = false;
+        $isPurchased = false;
 
-        // ユーザーが認証されている場合のみ、お気に入りの確認を行う
         if ($user) {
             $userId = $user->user_id;
             $isFavorited = Favorite::where('user_id', $userId)
                 ->where('item_id', $item_id)
                 ->exists();
+
+            // 購入済みの判定
+            $isPurchased = $user->orders()->where('item_id', $item_id)->exists();
+
+            // デバッグ: 購入済みの判定を確認
+            $hasOrders = $user->orders()->exists(); // 注文が存在するか確認
         }
 
-        // アイテムのお気に入り数を取得
         $favoriteCount = Favorite::where('item_id', $item_id)->count();
-
-        // コメントと、それに関連するユーザーのプロフィールを取得
-        $comments = Comment::with(['user.profile'])
-            ->where('item_id', $item_id)
-            ->get();
-
-        // コメント数を取得
+        $comments = Comment::with(['user.profile'])->where('item_id', $item_id)->get();
         $commentCount = $comments->count();
 
-        // ビューに必要なデータを渡す
         return view('item-detail', compact(
-            'userId', // ユーザーが認証されている場合のみ userId を渡す
+            'userId',
             'item',
             'favoriteCount',
             'isFavorited',
             'comments',
-            'commentCount'
+            'commentCount',
+            'isPurchased'
         ));
     }
+
 
     public function comment(CommentRequest $request, $item_id)
     {
@@ -104,6 +104,5 @@ class ItemDetailController extends Controller
             'isFavorited' => $isFavorited,
             'favoriteCount' => $favoriteCount,
         ]);
-
     }
 }

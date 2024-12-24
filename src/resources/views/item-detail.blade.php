@@ -34,10 +34,15 @@
 
         </div>
 
-        <form action="{{ route('purchase', ['item_id' => $item->item_id]) }}" method="post">
-            @csrf
-            <input type="hidden" name="item_id" value="{{ $item->item_id }}">
-            <button type="submit" class="submit">購入手続きへ</button>
+        <form action="{{ route('purchase', ['item_id' => $item->item_id]) }}" method="get">
+
+            <div class="submit-button">
+                @if ($isPurchased)
+                <button type="button" class="purchase-btn disabled" disabled>購入済み</button>
+                @else
+                <button type="submit" class="purchase-btn">購入する</button>
+                @endif
+            </div>
         </form>
 
         <div class="description">
