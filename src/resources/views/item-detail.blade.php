@@ -38,7 +38,7 @@
 
             <div class="submit-button">
                 @if ($isPurchased)
-                <button type="button" class="purchase-btn disabled" disabled>購入済み</button>
+                <button type="button" class="purchase-btn disabled" disabled>SOLD OUT</button>
                 @else
                 <button type="submit" class="purchase-btn">購入する</button>
                 @endif
