@@ -1,46 +1,47 @@
 .thanks-area {
-    width: 300px;
+    width: 250px;
     margin: 40px auto;
+    font-size: 12px;
 }
 
 .thanks-ttl {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 35px;
 }
 
 .thanks-msg {
-    font-size: 14px;
     line-height: 1.5;
 }
 
+.highlight {
+    font-weight: bold;
+    line-height: normal;
+    display: inline-block;
+    background: linear-gradient(transparent 50%, #fddb8a 50%);
+}
+
 /* タブレットサイズのレスポンシブ */
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 768px) {
     .thanks-area {
-        width: 450px;
+        width: 500px;
+        font-size: 16px;
     }
 
     .thanks-ttl {
-        font-size: 20px;
-    }
-
-    .thanks-msg {
         font-size: 18px;
     }
 }
 
 /* デスクトップサイズのレスポンシブ */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
     .thanks-area {
-        width: 550px;
+        width: 700px;
+        font-size: 20px;
     }
 
     .thanks-ttl {
         font-size: 22px;
-    }
-
-    .thanks-msg {
-        font-size: 20px;
     }
 }

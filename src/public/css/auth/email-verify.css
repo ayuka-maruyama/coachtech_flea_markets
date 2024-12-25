@@ -1,5 +1,5 @@
 .container-area {
-    width: 300px;
+    width: 250px;
     background-color: white;
     padding: 20px 10px;
     text-align: center;
@@ -16,7 +16,7 @@
 .card-body {
     color: red;
     padding: 15px;
-    font-size: 14px;
+    font-size: 12px;
     text-align: start;
 }
 
@@ -24,7 +24,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: 40px 0;
+    margin: 25px 0;
 }
 
 .resend-btn {
@@ -38,15 +38,14 @@
 }
 
 /* タブレットサイズのレスポンシブ */
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 768px) {
     .container-area {
-        width: 350px;
-        padding: 40px 10px;
-
+        width: 500px;
+        padding: 40px 15px;
     }
 
     .card-header {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .card-body {    
@@ -55,17 +54,14 @@
     }
 
     .resend-btn {
-        width: 300px;
+        width: 250px;
         font-size: 14px;
+        margin-top: 20px;
     }
 }
 
 /* デスクトップサイズのレスポンシブ */
-@media screen and (min-width: 768px) {
-    .container-area {
-        width: 500px;
-    }
-
+@media screen and (min-width: 1200px) {
     .card-header {
         font-size: 20px;
     }
