@@ -50,6 +50,7 @@ Route::get('/purchase/{item_id}', [PurchaseController::class, 'open'])->name('pu
 
 // 配送先変更
 Route::get('/purchase/address/{item_id}', [ProfileChangeController::class, 'open'])->name('profile.change');
+Route::post('/purchase/address/{item_id}', [ProfileChangeController::class, 'update'])->name('profile.update');
 
 // お気に入り登録
 Route::post('/favorite/toggle/{item_id}', [ItemDetailController::class, 'toggle'])->name('favorite.toggle');
