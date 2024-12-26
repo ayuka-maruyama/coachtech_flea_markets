@@ -1,41 +1,57 @@
 .purchase {
     font-size: 12px;
-    margin: 25px 20px;
+    width: 90%;
+    margin: 25px auto;
 }
 
+/* フレックス時の割合 */
+.purchase-info {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.purchase-view {
+    width: 80%;
+    margin: 20px auto;
+}
+
+/* 各エリアの最後に線 */
 .item-info,
 .payment,
 .address {
     border-bottom: 1px solid black;
 }
 
+.payment,
+.address {
+    padding: 15px;
+}
+
 .item-info {
     display: flex;
     justify-content: space-between;
-    padding: 15px 0;
+    padding-bottom: 30px;
 }
 
 .item-img {
-    width: 25%;
+    width: 40%;
+    max-width: 150px;
 }
 
 .item {
-    width: 70%;
+    width: 55%;
 }
 
-.item-name {
-    font-size: 15px;
+.item-name,
+.payment-ttl,
+.address-ttl {
+    font-size: 14px;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 .price {
-    font-size: 15px;
-}
-
-.payment,
-.address {
-    padding: 20px;
+    font-size: 14px;
 }
 
 .select {
@@ -44,28 +60,21 @@
     align-items: center;
     justify-content: space-between;
     width: 200px;
-    cursor: pointer; /* 選択エリアをクリック可能に */
-}
-
-.payment-ttl,
-.address-ttl {
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .payment-select {
-    flex-grow: 1; /* select ボックスが残りのスペースを占有 */
+    flex-grow: 1;
     border: 1px solid gray;
     border-radius: 5px;
     padding: 5px;
     width: 50%;
-    margin-left: 10px; /* アイコンと間隔を開ける */
+    margin-left: 10px;
     margin-bottom: 10px;
 }
 
 .payment-select:focus {
-    outline: none; /* フォーカスリングを非表示 */
+    outline: none;
 }
 
 .toggle {
@@ -74,7 +83,7 @@
     top: 35%;
     right: 10px;
     transform: translateY(-50%);
-    pointer-events: none; /* SVG 内の不要なイベントを無効化 */
+    pointer-events: none;
 }
 
 .address-flex {
@@ -87,20 +96,15 @@
 }
 
 .profile-address {
-    font-weight: bold;
-    margin-left: 40px;
-}
-
-.purchase-view {
-    margin-top: 20px;
+    margin-left: 10px;
+    margin-bottom: 10px;
 }
 
 .price-view,
 .payment-method {
+    border: 1px solid black;
     display: flex;
-    padding: 20px 15px;
-    align-items: center;
-    border: 1px solid gray;
+    padding: 15px;
 }
 
 .payment-method {
@@ -109,17 +113,8 @@
 
 .price-ttl,
 .method-ttl {
-    font-size: 12px;
-    width: 50%;
+    width: 45%;
     text-align: center;
-}
-
-.selected {
-    font-size: 12px;
-}
-
-.view-price.span {
-    font-size: 14px;
 }
 
 .purchase-btn {
@@ -129,20 +124,85 @@
     font-weight: bold;
     padding: 5px 0;
     text-align: center;
-    margin: 5px 0;
+    margin: 30px 0;
     border-radius: 5px;
 }
 
-.purchase-btn.disabled {
-    background-color: #ccc;
-    color: #666;
-    cursor: not-allowed;
-}
 
-/* タブレットサイズのレスポンシブ */
-@media screen and (min-width: 481px) {
-}
-
-/* デスクトップサイズのレスポンシブ */
 @media screen and (min-width: 768px) {
+    .purchase {
+        font-size: 16px;
+        margin: 55px auto;
+        max-width: 765px;
+    }
+
+    .purchase-flex {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .purchase-info {
+        width: 55%;
+        max-width: 440px;
+        margin: 0;
+    }
+
+    .purchase-view {
+        width: 40%;
+        max-width: 320px;
+        margin: 0;
+    }
+
+    .item-img {
+        max-width: 250px;
+    }
+
+    .item-name,
+    .price,
+    .item-name,
+    .payment-ttl,
+    .address-ttl  {
+        font-size: 18px;
+    }
+
+    .select {
+        width: 250px;
+    }
+
+    .payment-select,
+    .profile-address {
+        margin-left: 40px;
+        margin-bottom: 20px;
+    }
+
+    .price-view,
+    .payment-method {
+        padding: 25px 15px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .purchase {
+        font-size: 18px;
+        max-width: 1080px;
+    }
+
+
+    .purchase-info {
+        max-width: 550px;
+    }
+
+    .purchase-view {
+        width: 40%;
+        max-width: 520px;
+        margin: 0;
+    }
+
+    .item-name,
+    .price,
+    .item-name,
+    .payment-ttl,
+    .address-ttl  {
+        font-size: 20px;
+    }
 }
