@@ -6,10 +6,10 @@
 
 @section('content')
 <div class="purchase">
-    <div class="purchase-flex">
-        <!-- 購入フォーム -->
-        <form method="POST" action="{{ route('purchase.store', ['item_id' => $item->item_id]) }}">
-            @csrf
+    <!-- 購入フォーム -->
+    <form method="POST" action="{{ route('purchase.store', ['item_id' => $item->item_id]) }}">
+        @csrf
+        <div class="purchase-flex">
 
             <!-- 商品情報、購入情報選択エリア -->
             <div class="purchase-info">
@@ -51,26 +51,30 @@
 
             <!-- 商品情報、購入情報選択エリアで選択した内容を表示するエリア -->
             <div class="purchase-view">
+                
                 <div class="price-view">
                     <p class="price-ttl">商品代金</p>
-                    <p class="item-price">&yen; <span class="view-price span">{{ number_format($item->price) }}</span></p>
+                    <p class="item-price">&yen; <span class="price">{{ number_format($item->price) }}</span></p>
                 </div>
-                <div class="payment-method"></div>
+
+                <div class="payment-method"></div> <!-- 購入ボタン -->
+                
+                <div class="submit-button">
+                    <button type="submit" class="purchase-btn">購入する</button>
+                </div>
+
             </div>
 
-            <!-- 購入ボタン -->
-            <div class="submit-button">
-                <button type="submit" class="purchase-btn">購入する</button>
-            </div>
-        </form>
-        @if (count($errors) > 0)
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{$error}}</li>
-            @endforeach
-        </ul>
-        @endif
-    </div>
+        </div>
+
+    </form>
+    @if (count($errors) > 0)
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{$error}}</li>
+        @endforeach
+    </ul>
+    @endif
 </div>
 @endsection
 
