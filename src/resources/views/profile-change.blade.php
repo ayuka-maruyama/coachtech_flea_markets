@@ -46,3 +46,7 @@
     </div>
 </div>
 @endsection
+
+@section('js')
+<script src="{{ asset('js/profile-change.js') }}" defer></script>
+@endsection
