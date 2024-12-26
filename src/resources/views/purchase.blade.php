@@ -45,20 +45,24 @@
                     <p class="profile-address">〒{{ $profile->postal_number }}</p>
                     <p class="profile-address">{{ $profile->address }}</p>
                     <p class="profile-address">{{ $profile->building }}</p>
+                    <!-- 配送先情報を送信 -->
+                    <input type="hidden" name="postal_number" value="{{ $profile->postal_number }}">
+                    <input type="hidden" name="address" value="{{ $profile->address }}">
+                    <input type="hidden" name="building" value="{{ $profile->building }}">
                 </div>
 
             </div>
 
             <!-- 商品情報、購入情報選択エリアで選択した内容を表示するエリア -->
             <div class="purchase-view">
-                
+
                 <div class="price-view">
                     <p class="price-ttl">商品代金</p>
                     <p class="item-price">&yen; <span class="price">{{ number_format($item->price) }}</span></p>
                 </div>
 
-                <div class="payment-method"></div> <!-- 購入ボタン -->
-                
+                <div class="payment-method"></div>
+
                 <div class="submit-button">
                     <button type="submit" class="purchase-btn">購入する</button>
                 </div>

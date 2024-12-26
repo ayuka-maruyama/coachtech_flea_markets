@@ -23,25 +23,32 @@ class PurchaseController extends Controller
         return view('purchase', compact('user', 'item', 'profile'));
     }
 
-    public function store(Request $request, $item_id)
+    public function store(PurchaseRequest $request, $item_id)
     {
         $user = Auth::user();
         $profile = $user->profile;
 
-        $order = Order::create([
-            'user_id' => $user->user_id,
-            'item_id' => $item_id,
-            'payment_method' => $request->payment_method,
-            'postal_number' => $profile->postal_number,
-            'address' => $profile->address,
-            'building' => $profile->building,
-        ]);
+        $validatedData = $request->validated();
 
-        $item = Item::find($item_id); // 対象の商品を取得
-        if ($item) {
-            $item->update([
-                'stock_status' => 1,
+        try {
+            // 注文の作成
+            $order = Order::create([
+                'user_id' => $user->user_id,
+                'item_id' => $item_id,
+                'payment_method' => $validatedData['payment_method'],
+                'postal_number' => $profile->postal_number,
+                'address' => $profile->address,
+                'building' => $profile->building,
             ]);
+
+            $item = Item::find($item_id);
+            if ($item) {
+                $item->update([
+                    'stock_status' => 1,
+                ]);
+            }
+        } catch (\Exception $e) {
+            return redirect()->route('home')->with('error', '購入処理中にエラーが発生しました。');
         }
 
         return redirect()->route('home')->with('message', '購入が完了しました。');
