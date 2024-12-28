@@ -8,6 +8,7 @@ use App\Http\Controllers\ItemDetailController;
 use App\Http\Controllers\ProfileChangeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\StripeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -15,10 +16,6 @@ use Illuminate\Http\Request;
 
 // ホーム画面
 Route::get('/', [ItemController::class, 'index'])->name('home');
-Route::get('/item/{item_id}', [ItemDetailController::class, 'open'])->name('detail.open');
-Route::post('/item/{item_id}', [ItemDetailController::class, 'open'])->name('detail.open');
-Route::post('/item/{item_id}/comment', [ItemDetailController::class, 'comment'])->name('comment');
-
 
 // 新規登録
 Route::get('/register', [RegisterController::class, 'open'])->name('register.open');
@@ -45,6 +42,16 @@ Route::middleware(['auth', 'throttle:6,1'])->group(function () {
 // ログアウト
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+// 商品詳細画面
+Route::get('/item/{item_id}', [ItemDetailController::class, 'open'])->name('detail.open');
+Route::post('/item/{item_id}', [ItemDetailController::class, 'open'])->name('detail.open');
+Route::post('/item/{item_id}/comment', [ItemDetailController::class, 'comment'])->name('comment');
+
+// 商品購入完了画面
+Route::get('/purchase/complete', function () {
+    return view('purchase-complete');
+})->name('purchase.complete');
+
 // 商品購入
 Route::get('/purchase/{item_id}', [PurchaseController::class, 'open'])->name('purchase');
 
@@ -60,4 +67,7 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/mypage/profile', [ProfileController::class, 'open'])->name('profile');
     Route::post('/mypage/profile', [ProfileController::class, 'store'])->name('profile.store');
     Route::post('/purchase/order/{item_id}', [PurchaseController::class, 'store'])->name('purchase.store');
+    Route::get('/stripe/checkout/{order_id}', [StripeController::class, 'checkout'])->name('stripe.checkout');
+    Route::get('/stripe/success/{order_id}', [StripeController::class, 'success'])->name('stripe.success');
+    Route::get('/stripe/cancel', [StripeController::class, 'cancel'])->name('stripe.cancel');
 });
