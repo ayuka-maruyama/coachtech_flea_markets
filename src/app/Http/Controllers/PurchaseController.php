@@ -51,6 +51,10 @@ class PurchaseController extends Controller
             return redirect()->route('home')->with('error', '購入処理中にエラーが発生しました。');
         }
 
-        return redirect()->route('home')->with('message', '購入が完了しました。');
+        if ($validatedData['payment_method'] === 'card') {
+            return redirect()->action([StripeController::class, 'checkout'], ['order_id' => $order->order_id]);
+        } else {
+            return redirect()->route('purchase.complete')->with('message', '購入が完了しました。');
+        }
     }
 }
