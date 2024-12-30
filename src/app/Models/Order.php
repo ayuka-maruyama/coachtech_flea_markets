@@ -14,7 +14,7 @@ class Order extends Model
     public $incrementing = true;
     protected $keyType = 'int';
 
-    protected $fillable = ['item_id', 'user_id', 'payment_method', 'postal_number', 'address', 'building'];
+    protected $fillable = ['item_id', 'user_id', 'payment_method', 'postal_number', 'address', 'building', 'status'];
     protected $dates = ['created_at', 'updated_at'];
 
     public function user()
