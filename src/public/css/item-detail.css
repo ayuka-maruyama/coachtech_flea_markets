@@ -94,8 +94,10 @@
     height: 5vh;
 }
 
-.category {
-    margin-bottom: 10px;
+.category,
+.condition,
+.comment-area {
+    margin-bottom: 15px;
 }
 
 .category-ttl,
