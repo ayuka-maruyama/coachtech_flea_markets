@@ -30,11 +30,7 @@ class ItemDetailController extends Controller
                 ->where('item_id', $item_id)
                 ->exists();
 
-            // 購入済みの判定
-            $isPurchased = $user->orders()->where('item_id', $item_id)->exists();
-
-            // デバッグ: 購入済みの判定を確認
-            $hasOrders = $user->orders()->exists(); // 注文が存在するか確認
+            $isPurchased = $item->stock_status === 1;
         }
 
         $favoriteCount = Favorite::where('item_id', $item_id)->count();
