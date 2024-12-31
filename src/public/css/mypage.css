@@ -1,0 +1,99 @@
+.mypage-content {
+    font-size: 12px;
+}
+
+.user-area {
+    width: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30px auto;
+}
+
+.profile-img,
+.profile-placeholder {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.profile-img {
+    object-fit: cover;
+}
+
+.profile-placeholder {
+    background-color: gray;
+    display: inline-block;
+}
+
+.profile-name {
+    margin: 0 15px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.submit {
+    padding: 8px 15px;
+    color: #FF5555;
+    border: 1px solid #FF5555;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sell-item {
+    margin: 0 5% 0 15%;
+}
+
+.sell-item.span{
+    margin: 0 5% 0 15%;
+    color: #FF5555;
+    font-weight: bold;
+}
+
+.buy-item.span {
+    color: #FF5555;
+    font-weight: bold;
+}
+
+/* タブレットサイズのレスポンシブ */
+@media screen and (min-width: 768px) {
+    .mypage-content {
+        font-size: 16px;
+    }
+
+    .user-area {
+        width: 600px;
+    }
+
+    .profile-img,
+    .profile-placeholder {
+        width: 55px;
+        height: 55px;
+    }
+
+    .profile-name {
+        font-size: 18px;
+        width: 300px;
+    }
+}
+
+/* デスクトップサイズのレスポンシブ */
+@media screen and (min-width: 1200px) {
+    .mypage-content {
+        font-size: 20px;
+    }
+
+    .user-area {
+        width: 700px;
+    }
+
+    .profile-img,
+    .profile-placeholder {
+        width: 65px;
+        height: 65px;
+    }
+
+    .profile-name {
+        font-size: 22px;
+    }
+}
