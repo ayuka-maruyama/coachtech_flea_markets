@@ -24,8 +24,11 @@
 }
 
 .image-preview {
-    display: none;
-    width: 90%;
+    display: none; /* 最初は非表示 */
+    width: 100%;   /* プレビュー領域の幅いっぱいに表示 */
+    height: 100%;  /* プレビュー領域の高さいっぱいに表示 */
+    object-fit: cover; /* 画像を枠にフィットさせる */
+    object-position: center; /* 画像の中心を基準にトリミング */
 }
 
 .file-upload {
