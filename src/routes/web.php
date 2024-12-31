@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ItemDetailController;
+use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ProfileChangeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
@@ -70,4 +71,5 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/stripe/checkout/{order_id}', [StripeController::class, 'checkout'])->name('stripe.checkout');
     Route::get('/stripe/success/{order_id}', [StripeController::class, 'success'])->name('stripe.success');
     Route::get('/stripe/cancel', [StripeController::class, 'cancel'])->name('stripe.cancel');
+    Route::get('/mypage', [MypageController::class, 'open'])->name('mypage.open');
 });
