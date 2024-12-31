@@ -30,7 +30,7 @@ class ProfileController extends Controller
         // バリデーション済みのデータを取得
         $addressData = $addressRequest->validated();
         $profileData = $profileRequest->validated();
-        
+
         // 郵便番号にハイフンを自動挿入
         $addressData['postal_number'] = preg_replace(
             '/^(\d{3})(\d{4})$/',
@@ -38,7 +38,6 @@ class ProfileController extends Controller
             str_replace('-', '', $addressData['postal_number']) // ハイフンを一度除去
         );
 
-        // プロフィール画像の保存処理
         if ($profileRequest->hasFile('profile_image')) {
             // ファイルの拡張子を取得
             $extension = $profileRequest->file('profile_image')->getClientOriginalExtension();
@@ -46,8 +45,9 @@ class ProfileController extends Controller
             // ユーザーIDをファイル名として使用（例: 1.jpg）
             $fileName = Auth::id() . '.' . $extension;
 
-            // ファイルを保存
+            // ファイルを保存し、保存先パスを取得
             $filePath = $profileRequest->file('profile_image')->storeAs('profile_images', $fileName, 'public');
+            $fileName = 'storage/' . $filePath; // フルパスを生成
         } else {
             $fileName = null;
         }
