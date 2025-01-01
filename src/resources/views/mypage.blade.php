@@ -15,7 +15,7 @@
         @else
         <div class="profile-placeholder"></div>
         @endif
-        <h3 class="profile-name">{{ $profile->profile_name }}</h3>
+        <h3 class="user-name">{{ $user->name }}</h3>
         <form action="/mypage/profile" method="get">
             <button type="submit" class="submit">プロフィールを編集</button>
         </form>

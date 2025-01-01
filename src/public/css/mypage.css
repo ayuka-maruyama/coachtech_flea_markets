@@ -26,7 +26,7 @@
     display: inline-block;
 }
 
-.profile-name {
+.user-name {
     margin: 0 15px;
     font-size: 14px;
     font-weight: bold;
@@ -71,7 +71,7 @@
         height: 55px;
     }
 
-    .profile-name {
+    .user-name {
         font-size: 18px;
         width: 300px;
     }
@@ -93,7 +93,7 @@
         height: 80px;
     }
 
-    .profile-name {
+    .user-name {
         font-size: 22px;
     }
 }
