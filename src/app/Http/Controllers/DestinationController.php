@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\User;
 use App\Models\Profile;
-use App\Http\Requests\ProfileChangeRequest;
+use App\Http\Requests\DestinationRequest;
 
-class ProfileChangeController extends Controller
+class DestinationController extends Controller
 {
     public function open($item_id)
     {
@@ -23,7 +23,7 @@ class ProfileChangeController extends Controller
         return view('profile-change', compact('user', 'item', 'profile'));
     }
 
-    public function update(ProfileChangeRequest $request, $item_id)
+    public function update(DestinationRequest $request, $item_id)
     {
         $user = User::with('profile')->find(Auth::id());
 

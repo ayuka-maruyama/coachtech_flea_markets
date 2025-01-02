@@ -6,7 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ItemDetailController;
 use App\Http\Controllers\MypageController;
-use App\Http\Controllers\ProfileChangeController;
+use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\StripeController;
@@ -57,8 +57,8 @@ Route::get('/purchase/complete', function () {
 Route::get('/purchase/{item_id}', [PurchaseController::class, 'open'])->name('purchase');
 
 // 配送先変更
-Route::get('/purchase/address/{item_id}', [ProfileChangeController::class, 'open'])->name('profile.change');
-Route::post('/purchase/address/{item_id}', [ProfileChangeController::class, 'update'])->name('profile.update');
+Route::get('/purchase/address/{item_id}', [DestinationController::class, 'open'])->name('destination.change');
+Route::post('/purchase/address/{item_id}', [DestinationController::class, 'update'])->name('destination.store');
 
 // お気に入り登録
 Route::post('/favorite/toggle/{item_id}', [ItemDetailController::class, 'toggle'])->name('favorite.toggle');
