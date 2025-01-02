@@ -14,12 +14,12 @@ class Order extends Model
     public $incrementing = true;
     protected $keyType = 'int';
 
-    protected $fillable = ['item_id', 'user_id', 'payment_method', 'postal_number', 'address', 'building', 'status'];
+    protected $fillable = ['item_id', 'user_id', 'payment_method', 'destination_id', 'status'];
     protected $dates = ['created_at', 'updated_at'];
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');  // 修正: 'item_id' → 'user_id'
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function item()
@@ -27,8 +27,8 @@ class Order extends Model
         return $this->belongsTo(Item::class, 'item_id');
     }
 
-    public function payment()
+    public function destination()
     {
-        return $this->hasOne(Payment::class);
+        return $this->belongsTo(Destination::class, 'destination_id');
     }
 }
