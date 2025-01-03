@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\Order;
+use App\Models\Destination;
+use Illuminate\Support\Facades\Log;
 
 class PurchaseController extends Controller
 {
@@ -17,15 +19,23 @@ class PurchaseController extends Controller
         }
 
         $item = Item::findOrFail($item_id);
-        $profile = $user->profile;
 
-        return view('purchase', compact('user', 'item', 'profile'));
+        // destinationテーブルに該当があればdestination
+        // 該当なしなら、profile
+        $destination = Destination::where('user_id', $user->user_id)
+            ->where('item_id', $item_id)
+            ->first();
+
+        if (!$destination) {
+            $destination = $user->profile;
+        }
+
+        return view('purchase', compact('user', 'item', 'destination'));
     }
 
     public function store(PurchaseRequest $request, $item_id)
     {
         $user = Auth::user();
-        $profile = $user->profile;
 
         $validatedData = $request->validated();
 
@@ -36,12 +46,11 @@ class PurchaseController extends Controller
                     'user_id' => $user->user_id,
                     'item_id' => $item_id,
                     'payment_method' => $validatedData['payment_method'],
-                    'postal_number' => $profile->postal_number,
-                    'address' => $profile->address,
-                    'building' => $profile->building,
+                    'destination' => $request->destination_id,
                     'status' => 'pending', // 仮注文のステータス
                 ]);
             } catch (\Exception $e) {
+                Log::error('購入処理エラー', ['exception' => $e]);
                 return redirect()->route('home')->with('error', '購入処理中にエラーが発生しました。');
             }
 
@@ -53,9 +62,7 @@ class PurchaseController extends Controller
                     'user_id' => $user->user_id,
                     'item_id' => $item_id,
                     'payment_method' => $validatedData['payment_method'],
-                    'postal_number' => $profile->postal_number,
-                    'address' => $profile->address,
-                    'building' => $profile->building,
+                    'destination' => $request->destination_id,
                     'status' => 'completed', // 注文確定ステータス
                 ]);
 
@@ -66,6 +73,7 @@ class PurchaseController extends Controller
                     ]);
                 }
             } catch (\Exception $e) {
+                Log::error('購入処理エラー', ['exception' => $e]);
                 return redirect()->route('home')->with('error', '購入処理中にエラーが発生しました。');
             }
 

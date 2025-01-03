@@ -8,32 +8,50 @@ use App\Models\Item;
 use App\Models\User;
 use App\Models\Profile;
 use App\Http\Requests\DestinationRequest;
+use App\Models\Destination;
 
 class DestinationController extends Controller
 {
     public function open($item_id)
     {
+        // profile-change.blade.phpに初期登録したProfileデータを渡す
         if (!$user = Auth::user()) {
             return redirect()->route('login.open');
         }
 
         $item = Item::findOrFail($item_id);
-        $profile = $user->profile;
+        $destination = $user->profile;
 
-        return view('profile-change', compact('user', 'item', 'profile'));
+        return view('profile-change', compact('user', 'item', 'destination'));
     }
 
     public function update(DestinationRequest $request, $item_id)
     {
-        $user = User::with('profile')->find(Auth::id());
+        // 購入画面で送付先変更が選択され、更新するボタンが押されたときに、Destinationsテーブルに保存する
+        // 複数回更新されることを想定して、destinationsテーブルにuser_id,order_idが同じものがあれば更新、なければ新規作成するようにする
+        // 保存するカラム　user_id,item_id,postal_number,address,building
 
-        $profile = Profile::find($user->user_id);
+        $user = Auth::user();
 
-        $profile->update([
-            'postal_number' => $request->postal_number,
-            'address' => $request->address,
-            'building' => $request->building,
-        ]);
+        $destination = Destination::where('user_id', $user->user_id)
+            ->where('item_id', $item_id)
+            ->first();
+
+        if ($destination) {
+            $destination->update([
+                'postal_number' => $request->postal_number,
+                'address' => $request->address,
+                'building' => $request->building,
+            ]);
+        } else {
+            Destination::create([
+                'user_id' => $user->user_id,
+                'item_id' => $item_id,
+                'postal_number' => $request->postal_number,
+                'address' => $request->address,
+                'building' => $request->building,
+            ]);
+        }
 
         return redirect()->route('purchase', ['item_id' => $item_id])->with('message', '送付先を変更しました');
     }

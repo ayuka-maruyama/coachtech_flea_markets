@@ -42,13 +42,14 @@
                         <h3 class="address-ttl">配送先</h3>
                         <a href="{{ route('destination.change', ['item_id' => $item->item_id]) }}" class="address-change">変更する</a>
                     </div>
-                    <p class="profile-address">〒{{ $profile->postal_number }}</p>
-                    <p class="profile-address">{{ $profile->address }}</p>
-                    <p class="profile-address">{{ $profile->building }}</p>
+                    <p class="profile-address">〒{{ $destination->postal_number }}</p>
+                    <p class="profile-address">{{ $destination->address }}</p>
+                    <p class="profile-address">{{ $destination->building }}</p>
                     <!-- 配送先情報を送信 -->
-                    <input type="hidden" name="postal_number" value="{{ $profile->postal_number }}">
-                    <input type="hidden" name="address" value="{{ $profile->address }}">
-                    <input type="hidden" name="building" value="{{ $profile->building }}">
+                    <input type="hidden" name="postal_number" value="{{ $destination->postal_number }}">
+                    <input type="hidden" name="address" value="{{ $destination->address }}">
+                    <input type="hidden" name="building" value="{{ $destination->building }}">
+                    <input type="hidden" name="destination" value="{{ $destination->destination_id }}">
                 </div>
 
             </div>
