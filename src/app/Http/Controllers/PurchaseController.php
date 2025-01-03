@@ -46,7 +46,7 @@ class PurchaseController extends Controller
                     'user_id' => $user->user_id,
                     'item_id' => $item_id,
                     'payment_method' => $validatedData['payment_method'],
-                    'destination' => $request->destination_id,
+                    'destination_id' => $request->destination_id,
                     'status' => 'pending', // 仮注文のステータス
                 ]);
             } catch (\Exception $e) {
@@ -62,7 +62,7 @@ class PurchaseController extends Controller
                     'user_id' => $user->user_id,
                     'item_id' => $item_id,
                     'payment_method' => $validatedData['payment_method'],
-                    'destination' => $request->destination_id,
+                    'destination_id' => $request->destination_id,
                     'status' => 'completed', // 注文確定ステータス
                 ]);
 

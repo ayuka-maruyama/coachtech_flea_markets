@@ -49,7 +49,7 @@
                     <input type="hidden" name="postal_number" value="{{ $destination->postal_number }}">
                     <input type="hidden" name="address" value="{{ $destination->address }}">
                     <input type="hidden" name="building" value="{{ $destination->building }}">
-                    <input type="hidden" name="destination" value="{{ $destination->destination_id }}">
+                    <input type="hidden" name="destination_id" value="{{ $destination->destination_id }}">
                 </div>
 
             </div>
