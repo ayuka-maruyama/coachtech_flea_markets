@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('condition');
             $table->string('item_image');
             $table->integer('stock_status');
-            $table->integer('user_id');
+            $table->foreignId('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

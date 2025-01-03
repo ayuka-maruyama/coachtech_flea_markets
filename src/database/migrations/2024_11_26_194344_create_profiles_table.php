@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('building');
             $table->string('profile_image')->nullable();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

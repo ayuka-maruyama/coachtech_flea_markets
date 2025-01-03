@@ -10,18 +10,15 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id('order_id');
-            $table->foreignId('item_id');
-            $table->foreignId('user_id');
+            $table->foreignId('item_id')->references('item_id')->on('items')->onDelete('cascade');
+            $table->foreignId('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->string('payment_method');
-            $table->string('postal_number');
-            $table->string('address');
-            $table->string('building');
+            $table->foreignId('destination_id')->references('destination_id')->on('destinations')->onDelete('cascade');
             $table->string('status');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
         });
     }
+
 
     public function down(): void
     {
