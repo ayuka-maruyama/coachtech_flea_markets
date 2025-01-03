@@ -14,7 +14,7 @@ class Destination extends Model
     public $incrementing = true;
     protected $keyType = 'int';
 
-    protected $fillable = ['user_id', 'order_id', 'postal_number', 'address', 'building'];
+    protected $fillable = ['user_id', 'item_id', 'postal_number', 'address', 'building'];
     protected $dates = ['created_at', 'updated_at'];
 
     public function user()
@@ -22,8 +22,8 @@ class Destination extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function order()
+    public function item()
     {
-        return $this->hasOne(Order::class);
+        return $this->hasOne(Item::class);
     }
 }
