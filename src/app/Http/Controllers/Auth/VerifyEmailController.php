@@ -25,13 +25,13 @@ class VerifyEmailController extends Controller
         }
 
         if ($user->hasVerifiedEmail()) {
-            return redirect('/mypage/profile');
+            return redirect()->route('profile');
         }
 
         if ($request->hasValidSignature()) {
             $user->markEmailAsVerified();
             Auth::login($user);
-            return redirect('/mypage/profile');
+            return redirect()->route('profile');
         }
         abort(403, 'このリンクは無効です');
     }

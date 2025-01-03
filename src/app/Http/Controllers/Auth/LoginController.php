@@ -24,16 +24,16 @@ class LoginController extends Controller
 
             // email_verified_at の確認
             if (!$user->email_verified_at) {
-                return redirect('/email/verify');
+                return redirect()->route('verification.notice');
             }
 
             // profileの確認
             if (!$profile) {
-                return redirect('/mypage/profile');
+                return redirect()->route('profile');
             }
 
             // 上記条件がすべて不一致の場合
-            return redirect('/');
+            return redirect()->route('home');
         }
 
         return back()->withErrors([
@@ -48,6 +48,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect()->route('login.open');
     }
 }
