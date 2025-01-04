@@ -15,7 +15,6 @@
     width: 55px;
     height: 55px;
     border-radius: 50%;
-    border: 1px solid rgb(158, 157, 157);
     background-color: rgb(158, 157, 157);
     display: flex;
     align-items: center;
@@ -24,7 +23,6 @@
 }
 
 .image-preview {
-    display: none; /* 最初は非表示 */
     width: 100%;   /* プレビュー領域の幅いっぱいに表示 */
     height: 100%;  /* プレビュー領域の高さいっぱいに表示 */
     object-fit: cover; /* 画像を枠にフィットさせる */
