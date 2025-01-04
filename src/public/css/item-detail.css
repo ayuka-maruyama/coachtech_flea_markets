@@ -221,6 +221,10 @@
     .comment-sent {
         margin: 20px 0;
     }
+
+    .comment-textarea {
+        font-size: 14px;
+    }
 }
 
 /* デスクトップサイズのレスポンシブ */
@@ -274,4 +278,9 @@
         width: 30px;
         height: 30px;
     }
+
+    .comment-textarea {
+        font-size: 16px;
+    }
+
 }
