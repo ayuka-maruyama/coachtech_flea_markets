@@ -32,6 +32,9 @@ document
             return String.fromCharCode(s.charCodeAt(0) - 0xfee0);
         });
 
+        // 全角ハイフン（ー）を半角ハイフン（-）に変換
+        input = input.replace(/[ー―‐－]/g, "-");
+
         // 入力値を更新
         e.target.value = input;
     });
