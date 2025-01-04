@@ -8,6 +8,7 @@ use App\Http\Controllers\ItemDetailController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfileUpdateController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\StripeController;
 use Illuminate\Support\Facades\Route;
@@ -67,4 +68,5 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/stripe/success/{order_id}', [StripeController::class, 'success'])->name('stripe.success');
     Route::get('/stripe/cancel', [StripeController::class, 'cancel'])->name('stripe.cancel');
     Route::get('/mypage', [MypageController::class, 'open'])->name('mypage.open');
+    Route::get('/mypage/profile', [ProfileUpdateController::class, 'updateOpen'])->name('profile.update');
 });
