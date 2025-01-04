@@ -15,9 +15,9 @@ document.getElementById("image").addEventListener("change", function (event) {
         reader.readAsDataURL(file);
     } else {
         // ファイルが選択されていない場合
-        preview.src = ""; // プレビュー画像をクリア
-        preview.style.display = "none"; // 非表示にする
-        previewArea.style.backgroundColor = "gray"; // 背景色を灰色にする
+        preview.src = "{{ asset('image/default.jpg') }}"; // プレビュー画像をクリア
+        preview.style.display = "block"; // 画像を表示
+        previewArea.style.backgroundColor = "transparent"; // 背景色を透明に変更
     }
 });
 
