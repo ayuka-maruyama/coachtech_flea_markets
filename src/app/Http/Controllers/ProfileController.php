@@ -43,7 +43,7 @@ class ProfileController extends Controller
             $extension = $profileRequest->file('profile_image')->getClientOriginalExtension();
 
             // ユーザーIDをファイル名として使用（例: 1.jpg）
-            $fileName = Auth::id() . '.' . $extension;
+            $fileName = 'Profile' . Auth::id() . '_' . time() . '.' . $extension;
 
             // ファイルを保存し、保存先パスを取得
             $filePath = $profileRequest->file('profile_image')->storeAs('profile_images', $fileName, 'public');
