@@ -16,7 +16,7 @@
         <img class="profile-img" src="{{ asset('image/default.jpg') }}" alt="Default Profile Image">
         @endif
         <h3 class="user-name">{{ $user->name }}</h3>
-        <form action="/mypage/profile" method="get">
+        <form action="{{ route('profile.update') }}" method="get">
             <button type="submit" class="submit">プロフィールを編集</button>
         </form>
     </div>
