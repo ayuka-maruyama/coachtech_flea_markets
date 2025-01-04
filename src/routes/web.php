@@ -69,4 +69,5 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/stripe/cancel', [StripeController::class, 'cancel'])->name('stripe.cancel');
     Route::get('/mypage', [MypageController::class, 'open'])->name('mypage.open');
     Route::get('/mypage/profile', [ProfileUpdateController::class, 'updateOpen'])->name('profile.update');
+    Route::patch('/mypage/profile', [ProfileUpdateController::class, 'updateStore'])->name('update.store');
 });
