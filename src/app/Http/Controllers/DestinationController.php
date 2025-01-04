@@ -22,7 +22,7 @@ class DestinationController extends Controller
         $item = Item::findOrFail($item_id);
         $destination = $user->profile;
 
-        return view('profile-change', compact('user', 'item', 'destination'));
+        return view('destination', compact('user', 'item', 'destination'));
     }
 
     public function update(DestinationRequest $request, $item_id)

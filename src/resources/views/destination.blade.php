@@ -3,7 +3,7 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/auth/register.css') }}">
 <link rel="stylesheet" href="{{ asset('css/auth/profile.css') }}">
-<link rel="stylesheet" href="{{ asset('css/profile-change.css') }}">
+<link rel="stylesheet" href="{{ asset('css/destination.css') }}">
 @endsection
 
 @section('content')
