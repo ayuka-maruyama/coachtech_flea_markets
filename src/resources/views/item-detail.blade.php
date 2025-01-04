@@ -76,11 +76,9 @@
             @foreach ($comments as $comment)
             <div class="comment-area">
                 <div class="comment-flex">
-                    @if ($comment->user->profile && $comment->user->profile->profile_image)
-                    <img class="profile-img" src="{{ asset('storage/profile_images/' . $comment->user->profile->profile_image) }}" alt="Profile Image">
-                    @else
-                    <div class="profile-img default-profile-image"></div>
-                    @endif
+                    <img id="image-preview" class="image-preview"
+                        src="{{ $comment->user->profile->profile_image ? asset('storage/' . $comment->user->profile->profile_image) : asset('image/default.jpg') }}"
+                        alt="プロフィール画像">
                     <p class="name">{{ $comment->user->name }}</p>
                 </div>
                 <p class="comment">{{ $comment->comment }}</p>

@@ -132,18 +132,13 @@
     align-items: center;
 }
 
-.profile-img {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.default-profile-image {
+.image-preview {
     background-color: #d3d3d3;
     width: 20px;
     height: 20px;
     border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .name {
@@ -212,8 +207,7 @@
         font-size: 18px;
     }
 
-    .profile-img,
-    .default-profile-image {
+    .image-preview {
         width: 25px;
         height: 25px;
     }
@@ -273,8 +267,7 @@
         font-size: 20px;
     }
 
-    .profile-img,
-    .default-profile-image {
+    .image-preview {
         width: 30px;
         height: 30px;
     }
