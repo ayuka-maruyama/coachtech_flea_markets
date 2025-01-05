@@ -43,10 +43,10 @@
                 </li>
                 @endif
                 <li class="my-page">
-                    <a href="/mypage" class="nav-btn">マイページ</a>
+                    <a href="{{ route('mypage.open') }}" class="nav-btn">マイページ</a>
                 </li>
                 <li class="exhibit">
-                    <a href="/sell" class="nav-btn">出品</a>
+                    <a href="{{ route('sell.open') }}" class="nav-btn">出品</a>
                 </li>
             </ul>
         </nav>
@@ -62,7 +62,7 @@
         @endif
 
         @if(session('error'))
-        <div class="alert alert-error" id="error-message">
+        <div class=" alert alert-error" id="error-message">
             {{ session('error') }}
         </div>
         @endif
