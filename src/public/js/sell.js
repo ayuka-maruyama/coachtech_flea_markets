@@ -1,9 +1,41 @@
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("スクリプトが正しく読み込まれました");
+
     // 初期状態で￥マークを設定
     const input = document.getElementById("price");
     if (!input.value) {
         input.value = "￥"; // 初期値として￥0を設定
     }
+
+    // 選択されたカテゴリーIDを格納する配列
+    let selectedCategories = [];
+
+    // カテゴリーのボタンイベント
+    const categories = document.querySelectorAll(".category");
+    const categoryInput = document.getElementById("category-input");
+
+    categories.forEach((category) => {
+        category.addEventListener("click", function () {
+            // クリックされたボタンに active クラスをトグル
+            this.classList.toggle("active");
+
+            const categoryId = this.getAttribute("data-category-id");
+
+            if (this.classList.contains("active")) {
+                // active クラスが付いた場合は配列に追加
+                selectedCategories.push(Number(categoryId));
+            } else {
+                // active クラスが外れた場合は配列から削除
+                selectedCategories = selectedCategories.filter(
+                    (id) => id !== Number(categoryId)
+                );
+            }
+
+            // hidden input に選択されたカテゴリーIDを保存
+            categoryInput.value = JSON.stringify(selectedCategories);
+            console.log("選択されたカテゴリーID:", selectedCategories);
+        });
+    });
 
     // 画像プレビューの表示
     document
@@ -13,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function (e) {
-                    // プレビューの表示
                     const imagePreview =
                         document.getElementById("image-preview");
                     imagePreview.src = e.target.result;
@@ -28,16 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 reader.readAsDataURL(file);
             }
         });
-
-    // カテゴリーボタンの無効化（クリックでactiveクラスをトグル）
-    const categories = document.querySelectorAll(".category");
-
-    categories.forEach((category) => {
-        category.addEventListener("click", function () {
-            // クリックされたボタンにactiveクラスをトグル（付け外し）
-            this.classList.toggle("active");
-        });
-    });
 
     // 価格入力にカンマと￥マークを追加
     input.addEventListener("input", function () {
