@@ -8,7 +8,7 @@
 <div class="sell-area">
     <h1 class="ttl">商品の出品</h1>
 
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="{{ route('sell.store') }}" method="post" enctype="multipart/form-data">
         @csrf
 
         <!-- 商品画像表示部分 -->
@@ -18,9 +18,14 @@
                 <label for="image-input" id="select-button" class="select-button">
                     画像を選択する
                 </label>
-                <input type="file" id="image-input" class="image-input" accept="image/*" style="display: none;" />
+                <input type="file" id="image-input" name="item_image" class="image-input" accept="image/*" style="display: none;" />
                 <div class="image-preview-container" id="image-preview-container" style="display: none;">
                     <img id="image-preview" class="image-preview" src="#" alt="選択された画像" />
+                </div>
+                <div class="error">
+                    @error('item_image')
+                    <p>{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
         </div>
@@ -38,7 +43,14 @@
                         <button type="button" class="category" data-category-id="{{ $category->category_id }}">{{ $category->category_name }}</button>
                         @endforeach
                     </div>
+                    <div class="error">
+                        @error('category_id')
+                        <p>{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <input type="hidden" id="category-input" name="category_id">
                 </div>
+
                 <div class="condition-select">
                     <h3 class="condition-ttl">商品の状態</h3>
                     <select name="condition" id="condition" class="condition">
@@ -48,7 +60,13 @@
                         <option value="やや傷や汚れあり">やや傷や汚れあり</option>
                         <option value="状態が悪い">状態が悪い</option>
                     </select>
+                    <div class="error">
+                        @error('condition')
+                        <p>{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
+
             </div>
         </div>
 
@@ -61,16 +79,32 @@
                 <div class="item-name">
                     <h3 class="item-ttl">商品名</h3>
                     <input type="text" name="item_name" id="item_name" class="item_name">
+                    <div class="error">
+                        @error('item_name')
+                        <p>{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
                 <div class="item-description">
                     <h3 class="item-ttl">商品の説明</h3>
                     <textarea name="description" id="description" class="description"></textarea>
+                    <div class="error">
+                        @error('description')
+                        <p>{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
                 <div class="item-price">
                     <h3 class="item-ttl">販売価格</h3>
                     <div class="input-wrapper">
-                        <input type="text" id="price" name="price" class="price">
+                        <input type="text" id="price" name="price" class="price" required>
                     </div>
+                    <div class="error">
+                        @error('price')
+                        <p>{{ $message }}</p>
+                        @enderror
+                    </div>
+
                 </div>
             </div>
 
