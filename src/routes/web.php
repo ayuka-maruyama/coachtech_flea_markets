@@ -10,6 +10,7 @@ use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileUpdateController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\SellController;
 use App\Http\Controllers\StripeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -70,4 +71,6 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/mypage', [MypageController::class, 'open'])->name('mypage.open');
     Route::get('/mypage/profile', [ProfileUpdateController::class, 'updateOpen'])->name('profile.update');
     Route::patch('/mypage/profile', [ProfileUpdateController::class, 'updateStore'])->name('update.store');
+    Route::get('/sell', [SellController::class, 'open'])->name('sell.open');
+    Route::post('/sell', [SellController::class, 'store'])->name('sell.store');
 });
