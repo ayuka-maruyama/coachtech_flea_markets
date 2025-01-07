@@ -11,11 +11,23 @@ class ExhibitionRequest extends FormRequest
         return true;
     }
 
+    public function prepareForValidation()
+    {
+        $categoryIds = $this->input('category_id', '');
+
+        // price の加工処理
+        $this->merge([
+            'price' => $this->price !== null ? (int) str_replace([',', '￥'], '', $this->price) : null,
+            'category_ids' => $categoryIds ? json_decode($categoryIds) : null, // 空の場合 null をセット
+        ]);
+        logger('Processed category_ids:', [$this->input('category_ids')]);
+    }
+
     public function rules(): array
     {
         return [
             'item_name' => 'required|string',
-            'price' => 'required|numeric|min:0',
+            'price' => 'required|numeric|min:1',
             'description' => 'required|string|max:255',
             'condition' => 'required|string',
             'item_image' => 'required|file|image|mimes:jpeg,png',
@@ -24,23 +36,19 @@ class ExhibitionRequest extends FormRequest
         ];
     }
 
-    public function prepareForValidation()
-    {
-        $categoryIds = $this->input('category_id', ''); // カンマ区切り文字列として受け取る
-        $this->merge([
-            'price' => (int) str_replace([',', '￥'], '', $this->price),
-            'category_ids' => $categoryIds ? json_decode($categoryIds) : [], // JSON文字列を配列に変換
-        ]);
-        logger('category_ids (after):', [$this->input('category_ids')]); // ログ出力
-    }
-
     public function messages(): array
     {
         return [
-            'item_name.required' => '商品名は必須です。',
+            'item_name.required' => '商品名を入力してください。',
             'price.required' => '価格を入力してください。',
             'price.numeric' => '価格は数値で入力してください。',
             'price.min' => '価格は0円以上で入力してください。',
+            'description.required' => '商品の説明を入力してください。',
+            'description.string' => '商品の説明は文字列で入力してください。',
+            'description.max' => '商品の説明は255文字以内で入力してください。',
+            'condition.required' => '商品状態を選択してください。',
+            'item_image.required' => '商品画像を選択してください。',
+            'item_image.mimes' => '商品画像はjpegかpngのファイルをしてください。',
             'category_ids.required' => 'カテゴリーを選択してください。',
             'category_ids.*.exists' => '選択したカテゴリーが無効です。',
         ];
