@@ -10,7 +10,7 @@
 <div class="change-area">
     <h1 class="ttl">住所の変更</h1>
     <div class="change-form">
-        <form action="{{ route('destination.change', ['item_id' => $item->item_id]) }}" method="post">
+        <form action="{{ route('destination.store', ['item_id' => $item->item_id]) }}" method="post">
             @csrf
             <div class="form-group">
                 <label class="label" for="postal_number">郵便番号</label>
