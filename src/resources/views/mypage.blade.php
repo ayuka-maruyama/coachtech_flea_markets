@@ -11,7 +11,7 @@
     <!-- ユーザー情報を表示する部分 -->
     <div class="user-area">
         @if($profile->profile_image)
-        <img class="profile-img" src="{{ asset('storage/' . $profile->profile_image) }}" alt="Profile Image">
+        <img class="profile-img" src="{{ asset($profile->profile_image) }}" alt="Profile Image">
         @else
         <img class="profile-img" src="{{ asset('image/default.jpg') }}" alt="Default Profile Image">
         @endif

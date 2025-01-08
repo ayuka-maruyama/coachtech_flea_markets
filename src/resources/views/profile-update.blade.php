@@ -18,7 +18,7 @@
                     <!-- プロフィール画像が存在する場合はそれを表示、ない場合はデフォルト画像 -->
                     <img id="image-preview"
                         class="image-preview"
-                        src="{{ $user->profile && $user->profile->profile_image ? asset('storage/' . $user->profile->profile_image) : asset('image/default.jpg') }}"
+                        src="{{ $user->profile && $user->profile->profile_image ? asset($user->profile->profile_image) : asset('image/default.jpg') }}"
                         alt="プロフィール画像">
                 </div>
 

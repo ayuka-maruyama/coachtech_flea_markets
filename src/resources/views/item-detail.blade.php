@@ -77,7 +77,7 @@
             <div class="comment-area">
                 <div class="comment-flex">
                     <img id="image-preview" class="image-preview"
-                        src="{{ $comment->user->profile->profile_image ? asset('storage/' . $comment->user->profile->profile_image) : asset('image/default.jpg') }}"
+                        src="{{ $comment->user->profile->profile_image ? asset($comment->user->profile->profile_image) : asset('image/default.jpg') }}"
                         alt="プロフィール画像">
                     <p class="name">{{ $comment->user->name }}</p>
                 </div>
