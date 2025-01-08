@@ -34,7 +34,7 @@ class Item extends Model
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'category_item', 'item_id', 'category_id');
+        return $this->belongsToMany(Category::class, 'category_item', 'item_id', 'category_id')->withTimestamps();
     }
 
     public function user()
