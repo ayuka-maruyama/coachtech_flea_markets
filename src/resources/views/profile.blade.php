@@ -13,7 +13,10 @@
             @csrf
             <div class="img-area">
                 <div id="preview-area" class="preview-area">
-                    <img id="image-preview" class="image-preview" src="" alt="プレビュー画像">
+                    <img id="image-preview" class="image-preview"
+                        src="{{ asset('image/default.jpg') }}"
+                        alt="プレビュー画像"
+                        data-default="{{ asset('image/default.jpg') }}">
                 </div>
 
                 <label for="image" class="file-upload">

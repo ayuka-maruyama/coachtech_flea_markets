@@ -8,15 +8,15 @@ document.getElementById("image").addEventListener("change", function (event) {
 
         reader.onload = function (e) {
             preview.src = e.target.result;
-            preview.style.display = "block"; // 画像を表示
+            preview.style.display = "block";
             previewArea.style.backgroundColor = "transparent"; // 背景色を透明に変更
         };
 
         reader.readAsDataURL(file);
     } else {
-        // ファイルが選択されていない場合
-        preview.src = "{{ asset('image/default.jpg') }}"; // プレビュー画像をクリア
-        preview.style.display = "block"; // 画像を表示
+        // デフォルト画像を表示
+        preview.src = preview.dataset.default;
+        preview.style.display = "block";
         previewArea.style.backgroundColor = "transparent"; // 背景色を透明に変更
     }
 });
