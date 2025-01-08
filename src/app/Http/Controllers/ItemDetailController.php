@@ -57,6 +57,10 @@ class ItemDetailController extends Controller
             return redirect()->route('login.open');
         }
 
+        if (!$user->profile) {
+            return redirect()->route('profile')->with('message', 'プロフィールを設定してください');
+        }
+
         $comment = Comment::create([
             'user_id' => Auth::id(),
             'item_id' => $item_id,

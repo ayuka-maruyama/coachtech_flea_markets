@@ -18,6 +18,10 @@ class PurchaseController extends Controller
             return redirect()->route('login.open');
         }
 
+        if (!$user->profile) {
+            return redirect()->route('profile')->with('message', 'プロフィールを設定してください');
+        }
+
         $item = Item::findOrFail($item_id);
 
         // destinationテーブルに該当があればdestination

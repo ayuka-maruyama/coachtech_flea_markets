@@ -17,6 +17,10 @@ class MypageController extends Controller
             return redirect()->route('login.open');
         }
 
+        if (!$user->profile) {
+            return redirect()->route('profile')->with('message', 'プロフィールを設定してください');
+        }
+
         // ログイン済ユーザーの登録済みプロフィールを取得
         $profile = $user->profile;
 
