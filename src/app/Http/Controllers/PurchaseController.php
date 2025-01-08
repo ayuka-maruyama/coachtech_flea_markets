@@ -39,6 +39,20 @@ class PurchaseController extends Controller
 
         $validatedData = $request->validated();
 
+        if (!$request->destination_id) {
+            Destination::create([
+                'user_id' => $user->user_id,
+                'item_id' => $item_id,
+                'postal_number' => $user->profile->postal_number,
+                'address' => $user->profile->address,
+                'building' => $user->profile->building,
+            ]);
+        }
+
+        $destinationId = Destination::where('user_id', $user->user_id)
+            ->where('item_id', $item_id)
+            ->value('destination_id');
+
         if ($validatedData['payment_method'] === 'card') {
             // クレジットカード払いの場合、仮注文データを作成
             try {
@@ -46,7 +60,7 @@ class PurchaseController extends Controller
                     'user_id' => $user->user_id,
                     'item_id' => $item_id,
                     'payment_method' => $validatedData['payment_method'],
-                    'destination_id' => $request->destination_id,
+                    'destination_id' => $destinationId,
                     'status' => 'pending', // 仮注文のステータス
                 ]);
             } catch (\Exception $e) {
@@ -62,7 +76,7 @@ class PurchaseController extends Controller
                     'user_id' => $user->user_id,
                     'item_id' => $item_id,
                     'payment_method' => $validatedData['payment_method'],
-                    'destination_id' => $request->destination_id,
+                    'destination_id' => $destinationId,
                     'status' => 'completed', // 注文確定ステータス
                 ]);
 
