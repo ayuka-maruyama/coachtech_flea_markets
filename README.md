@@ -60,7 +60,7 @@
   ![flea_markets_er2](https://github.com/user-attachments/assets/560afd8c-2eae-4729-b320-12dc2d6263f3)  
   
 ## その他  
-  テストユーザー(メール認証、プロフィール設定済み)
+  テストユーザー(メール認証、プロフィール設定済み)  
   name: テスト  
   email: test@example.com  
   password: password  
