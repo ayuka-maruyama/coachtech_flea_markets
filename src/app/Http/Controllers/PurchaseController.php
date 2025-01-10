@@ -19,7 +19,7 @@ class PurchaseController extends Controller
         }
 
         if (!$user->profile) {
-            return redirect()->route('profile')->with('message', 'プロフィールを設定してください');
+            return redirect()->route('profile.open')->with('message', 'プロフィールを設定してください');
         }
 
         $item = Item::findOrFail($item_id);

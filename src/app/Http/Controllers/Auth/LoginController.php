@@ -29,7 +29,7 @@ class LoginController extends Controller
 
             // profileの確認
             if (!$profile) {
-                return redirect()->route('profile');
+                return redirect()->route('profile.open');
             }
 
             // 上記条件がすべて不一致の場合

@@ -58,7 +58,7 @@ class ItemDetailController extends Controller
         }
 
         if (!$user->profile) {
-            return redirect()->route('profile')->with('message', 'プロフィールを設定してください');
+            return redirect()->route('profile.open')->with('message', 'プロフィールを設定してください');
         }
 
         $comment = Comment::create([
