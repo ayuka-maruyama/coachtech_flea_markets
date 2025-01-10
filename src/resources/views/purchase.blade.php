@@ -15,7 +15,7 @@
             <div class="purchase-info">
                 <!-- 商品情報 -->
                 <div class="item-info">
-                    <img class="item-img" src="{{ $item->item_image }}" alt="{{ $item->item_name }}">
+                    <img class="item-img" src="{{ asset($item->item_image) }}" alt="{{ $item->item_name }}">
                     <div class="item">
                         <p class="item-name">{{ $item->item_name }}</p>
                         <p class="item-price">&yen; <span class="price">{{ number_format($item->price) }}</span></p>

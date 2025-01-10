@@ -20,7 +20,7 @@
                 @csrf
                 <button type="submit">
                     <div class="card-top">
-                        <img class="card-img" src="{{ $item->item_image }}" alt="{{ $item->item_name }}">
+                        <img class="card-img" src="{{ asset($item->item_image) }}" alt="{{ $item->item_name }}">
                     </div>
                     <div class="item-description">
                         <p class="item-name">{{ $item->item_name }}</p>
