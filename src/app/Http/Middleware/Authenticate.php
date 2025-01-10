@@ -12,7 +12,7 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (!$request->expectsJson()) {
-            return route('login.open'); // 未認証時に /login にリダイレクト
+            return route('login.open');
         }
     }
 }
