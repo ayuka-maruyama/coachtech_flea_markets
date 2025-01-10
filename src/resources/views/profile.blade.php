@@ -21,7 +21,7 @@
                         alt="プロフィール画像">
                 </div>
 
-                <label for="image" class="file-upload">
+                <label for="image" class="btn">
                     画像を選択
                 </label>
                 <input type="file" name="profile_image" id="image" style="display: none;">
