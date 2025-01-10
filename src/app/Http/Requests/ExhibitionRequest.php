@@ -15,12 +15,10 @@ class ExhibitionRequest extends FormRequest
     {
         $categoryIds = $this->input('category_id', '');
 
-        // price の加工処理
         $this->merge([
             'price' => $this->price !== null ? (int) str_replace([',', '￥'], '', $this->price) : null,
-            'category_ids' => $categoryIds ? json_decode($categoryIds) : null, // 空の場合 null をセット
+            'category_ids' => $categoryIds ? json_decode($categoryIds) : null,
         ]);
-        logger('Processed category_ids:', [$this->input('category_ids')]);
     }
 
     public function rules(): array
