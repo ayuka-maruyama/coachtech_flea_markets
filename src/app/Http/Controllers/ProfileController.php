@@ -7,6 +7,7 @@ use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Profile;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -17,17 +18,41 @@ class ProfileController extends Controller
         return view('profile', compact('user'));
     }
 
-    public function store(AddressRequest $addressRequest, ProfileRequest $profileRequest)
+    public function storeOrUpdate(AddressRequest $addressRequest, ProfileRequest $profileRequest)
     {
-        // 現在のユーザーがすでにプロフィールを持っているか確認
-        $existingProfile = Profile::where('user_id', Auth::id())->first();
+        // ログイン中のユーザーのプロフィールを取得
+        $profile = Profile::where('user_id', Auth::id())->first();
 
-        if ($existingProfile) {
-            // すでにプロフィールが存在する場合
-            return redirect()->back()->with('error', 'プロフィールはすでに作成されています');
+        // すでにプロフィールが存在する場合、更新処理
+        if ($profile) {
+            // 画像ファイルの処理
+            if ($profileRequest->hasFile('profile_image')) {
+                // 新しい画像がアップロードされている場合、既存画像を削除
+                if ($profile->profile_image) {
+                    Storage::delete('public/' . $profile->profile_image); // 既存の画像を削除
+                }
+
+                // 新しい画像を保存
+                $extension = $profileRequest->file('profile_image')->getClientOriginalExtension();
+                $fileName = 'Profile' . Auth::id() . '_' . time() . '.' . $extension;
+                $filePath = $profileRequest->file('profile_image')->storeAs('profile_images', $fileName, 'public');
+
+                // 新しい画像のパスを保存
+                $profile->profile_image = 'profile_images/' . $fileName;
+            }
+
+            // プロフィールの更新
+            $profile->update([
+                'profile_name' => $addressRequest->profile_name,
+                'postal_number' => $addressRequest->postal_number,
+                'address' => $addressRequest->address,
+                'building' => $addressRequest->building,
+            ]);
+
+            return redirect()->route('mypage.open')->with('success', 'プロフィールが更新されました');
         }
 
-        // バリデーション済みのデータを取得
+        // プロフィールがまだ作成されていない場合は新規作成
         $addressData = $addressRequest->validated();
         $profileData = $profileRequest->validated();
 
@@ -53,7 +78,7 @@ class ProfileController extends Controller
         }
 
         // プロフィールの保存
-        $profile = Profile::create([
+        Profile::create([
             'profile_name' => $addressData['profile_name'],
             'postal_number' => $addressData['postal_number'],
             'address' => $addressData['address'],
@@ -62,6 +87,6 @@ class ProfileController extends Controller
             'user_id' => Auth::id(),
         ]);
 
-        return redirect('/')->with('success', 'プロフィールを更新しました');
+        return redirect('/')->with('success', 'プロフィールが作成されました');
     }
 }
