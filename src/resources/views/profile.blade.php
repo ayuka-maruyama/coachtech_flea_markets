@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/auth/register.css') }}">
 <link rel="stylesheet" href="{{ asset('css/auth/profile.css') }}">
 @endsection
 
 @section('content')
-<div class="profile-area">
+<div class="profile-area area">
     <h1 class="ttl">プロフィール設定</h1>
     <div class="profile-form">
         <form action="{{ route('profile.storeOrUpdate') }}" method="post" enctype="multipart/form-data">
