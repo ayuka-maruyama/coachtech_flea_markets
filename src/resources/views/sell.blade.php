@@ -22,11 +22,11 @@
                 </div>
             </div>
             <div class="image-upload-container">
-                <label for="image-input" id="select-button" class="select-button">
+                <label for="image-input" class="btn">
                     画像を選択する
                 </label>
                 <input type="file" id="image-input" name="item_image" class="image-input" accept="image/*" style="display: none;" />
-                <div class="image-preview-container" id="image-preview-container" style="display: none;">
+                <div class="image-container" id="image-preview-container" style="display: none;">
                     <img id="image-preview" class="image-preview" src="#" alt="選択された画像" />
                 </div>
             </div>
@@ -49,7 +49,7 @@
                     </div>
                     <div class="categories">
                         @foreach($categories as $category)
-                        <button type="button" class="category" data-category-id="{{ $category->category_id }}">{{ $category->category_name }}</button>
+                        <button type="button" class="category btn" data-category-id="{{ $category->category_id }}">{{ $category->category_name }}</button>
                         @endforeach
                     </div>
                     <input type="hidden" id="category-input" name="category_id">
@@ -72,7 +72,6 @@
                         <option value="状態が悪い">状態が悪い</option>
                     </select>
                 </div>
-
             </div>
         </div>
 
@@ -80,7 +79,6 @@
         <div class="item-detail-container">
             <h2 class="detail-ttl">商品名と説明</h2>
 
-            <!-- カテゴリー部分 -->
             <div class="item-container">
                 <div class="item-name">
                     <div class="flex">
@@ -91,7 +89,7 @@
                             @enderror
                         </div>
                     </div>
-                    <input type="text" name="item_name" id="item_name" class="item_name">
+                    <input type="text" name="item_name" id="item_name" class="form-input">
                 </div>
                 <div class="item-description">
                     <div class="flex">
@@ -102,7 +100,7 @@
                             @enderror
                         </div>
                     </div>
-                    <textarea name="description" id="description" class="description"></textarea>
+                    <textarea name="description" id="description" class="form-input"></textarea>
                 </div>
                 <div class="item-price">
                     <div class="flex">
@@ -113,16 +111,12 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="input-wrapper">
-                        <input type="text" id="price" name="price" class="price" required>
-                    </div>
-
+                    <input type="text" id="price" name="price" class="form-input" required>
                 </div>
             </div>
 
-            <button type="submit" class="submit">登録する</button>
+            <button type="submit" class="btn submit-btn">登録する</button>
         </div>
-
     </form>
 </div>
 @endsection

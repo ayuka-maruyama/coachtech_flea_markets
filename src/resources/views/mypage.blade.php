@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/item.css') }}">
 <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
 @endsection
 
@@ -17,7 +16,7 @@
         @endif
         <h3 class="user-name">{{ $user->name }}</h3>
         <form action="{{ route('profile.open') }}" method="get">
-            <button type="submit" class="submit">プロフィールを編集</button>
+            <button type="submit" class="btn">プロフィールを編集</button>
         </form>
     </div>
 
