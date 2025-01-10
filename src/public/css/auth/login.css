@@ -1,26 +1,3 @@
-.login-area {
-    width: 250px;
-    margin: 40px auto;
-    font-size: 12px;
-}
+/* 共通部分はcommon.cssに記述 */
 
-.register-link {
-    color: #008cff;
-    text-align: center;
-}
-
-/* タブレットサイズのレスポンシブ */
-@media screen and (min-width: 768px) {
-    .login-area {
-        width: 500px;
-        font-size: 16px;
-    }
-}
-
-/* デスクトップサイズのレスポンシブ */
-@media screen and (min-width: 1200px) {
-    .login-area {
-        width: 700px;
-        font-size: 20px;
-    }
-}
+/* 必要に応じて、特有のスタイルをここに記述 */

@@ -1,3 +1,4 @@
+/* ヘッダー */
 .header {
     width: 100%;
     background-color: black;
@@ -83,7 +84,47 @@
     margin-bottom: 30px;
 }
 
-@media screen and (min-width: 768px)  {
+/* 汎用エリアスタイル */
+.area {
+    width: 250px;
+    margin: 40px auto;
+    font-size: 12px;
+}
+
+/* フォーム関連 */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-input {
+    width: 100%;
+    border: 1px solid #919191;
+    border-radius: 3px;
+    padding: 5px 10px;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: #FF5555;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+.link {
+    color: #008cff;
+    text-align: center;
+}
+
+/* レスポンシブ対応 */
+/* タブレットサイズ */
+@media screen and (min-width: 768px) {
     .header {
         padding: 8px 10px;
         font-size: 12px;
@@ -99,11 +140,20 @@
     }
 
     .nav {
-    width: 30%;
+        width: 30%;
     }
 
     .nav li {
         height: 25px;
+    }
+
+    .area {
+        width: 500px;
+        font-size: 16px;
+    }
+
+    .form-group {
+        height: 60px;
     }
 
     .ttl {
@@ -112,6 +162,7 @@
     }
 }
 
+/* デスクトップサイズ */
 @media screen and (min-width: 1200px) {
     .header {
         padding: 10px 12px;
@@ -131,6 +182,15 @@
 
     .nav li {
         height: 30px;
+    }
+
+    .area {
+        width: 700px;
+        font-size: 20px;
+    }
+
+    .form-group {
+        height: 80px;
     }
 
     .ttl {
