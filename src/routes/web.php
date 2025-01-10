@@ -62,15 +62,14 @@ Route::post('/favorite/toggle/{item_id}', [ItemDetailController::class, 'toggle'
 
 // マイページ遷移
 Route::middleware('auth', 'verified')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'open'])->name('profile');
-    Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
     Route::post('/purchase/order/{item_id}', [PurchaseController::class, 'store'])->name('purchase.store');
     Route::get('/stripe/checkout/{order_id}', [StripeController::class, 'checkout'])->name('stripe.checkout');
     Route::get('/stripe/success/{order_id}', [StripeController::class, 'success'])->name('stripe.success');
     Route::get('/stripe/cancel', [StripeController::class, 'cancel'])->name('stripe.cancel');
     Route::get('/mypage', [MypageController::class, 'open'])->name('mypage.open');
-    Route::get('/mypage/profile', [ProfileUpdateController::class, 'updateOpen'])->name('profile.update');
-    Route::patch('/mypage/profile', [ProfileUpdateController::class, 'updateStore'])->name('update.store');
+    Route::get('/mypage/profile', [ProfileController::class, 'open'])->name('profile.open');
+    Route::post('/mypage/profile', [ProfileController::class, 'storeOrUpdate'])->name('profile.storeOrUpdate');
+    Route::patch('/mypage/profile', [ProfileController::class, 'storeOrUpdate'])->name('profile.storeOrUpdate');
     Route::get('/sell', [SellController::class, 'open'])->name('sell.open');
     Route::post('/sell', [SellController::class, 'store'])->name('sell.store');
 });
