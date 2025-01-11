@@ -61,7 +61,7 @@
         </form>
 
         <p class="link login-link">
-            <a href="{{ route('login.open') }}">ログインはこちら</a>
+            <a href="{{ route('login.form.show') }}">ログインはこちら</a>
         </p>
 
     </div>

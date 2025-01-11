@@ -14,7 +14,7 @@ class MypageController extends Controller
     {
         // ログイン状況を確認して、未ログインならログイン画面へ遷移
         if (!$user = Auth::user()) {
-            return redirect()->route('login.open');
+            return redirect()->route('login.form.show');
         }
 
         if (!$user->profile) {

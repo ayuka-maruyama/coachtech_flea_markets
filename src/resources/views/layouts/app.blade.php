@@ -39,7 +39,7 @@
                 </form>
                 @else
                 <li class="login">
-                    <a href="{{ route('login.open') }}" class="nav-btn">ログイン</a>
+                    <a href="{{ route('login.form.show') }}" class="nav-btn">ログイン</a>
                 </li>
                 @endif
                 <li class="my-page">

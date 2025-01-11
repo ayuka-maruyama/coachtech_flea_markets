@@ -11,7 +11,7 @@
 
     <div class="login-form">
 
-        <form action="{{ route('login.store') }}" method="post">
+        <form action="{{ route('login.authenticate') }}" method="post">
             @csrf
 
             <div class="form-group">

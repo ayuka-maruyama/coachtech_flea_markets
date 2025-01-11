@@ -10,12 +10,12 @@ use App\Models\Profile;
 
 class LoginController extends Controller
 {
-    public function open()
+    public function showLoginForm()
     {
         return view('auth.login');
     }
 
-    public function store(LoginRequest $request)
+    public function handleLogin(LoginRequest $request)
     {
         if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
@@ -43,11 +43,15 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login.form.show');
+        }
+
         Auth::logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login.open');
+        return redirect()->route('login.form.show');
     }
 }

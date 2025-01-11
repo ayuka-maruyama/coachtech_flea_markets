@@ -54,7 +54,7 @@ class ItemDetailController extends Controller
         $user = Auth::user();
 
         if (!$user) {
-            return redirect()->route('login.open');
+            return redirect()->route('login.form.show');
         }
 
         if (!$user->profile) {

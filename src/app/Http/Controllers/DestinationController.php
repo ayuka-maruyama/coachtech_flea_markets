@@ -16,7 +16,7 @@ class DestinationController extends Controller
     {
         // profile-change.blade.phpに初期登録したProfileデータを渡す
         if (!$user = Auth::user()) {
-            return redirect()->route('login.open');
+            return redirect()->route('login.form.show');
         }
 
         $item = Item::findOrFail($item_id);

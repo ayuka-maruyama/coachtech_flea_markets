@@ -8,14 +8,10 @@ use App\Http\Controllers\ItemDetailController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProfileUpdateController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\StripeController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;
 
 // ホーム画面
 Route::get('/', [ItemController::class, 'index'])->name('home');
@@ -28,8 +24,8 @@ Route::get('/thanks', function () {
 })->name('register.thanks');
 
 // ログイン
-Route::get('/login', [LoginController::class, 'open'])->name('login.open');
-Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form.show');
+Route::post('/login', [LoginController::class, 'handleLogin'])->name('login.authenticate');
 
 // メール認証
 Route::middleware('auth')->group(function () {
