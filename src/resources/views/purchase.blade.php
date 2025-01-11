@@ -40,7 +40,7 @@
                 <div class="address">
                     <div class="address-flex">
                         <h3 class="address-ttl">配送先</h3>
-                        <a href="{{ route('destination.change', ['item_id' => $item->item_id]) }}" class="address-change">変更する</a>
+                        <a href="{{ route('destination.show', ['item_id' => $item->item_id]) }}" class="address-change">変更する</a>
                     </div>
                     <p class="profile-address">〒{{ $destination->postal_number }}</p>
                     <p class="profile-address">{{ $destination->address }}</p>

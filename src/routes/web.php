@@ -50,8 +50,8 @@ Route::post('/item/{item_id}/comment', [ItemDetailController::class, 'comment'])
 Route::get('/purchase/{item_id}', [PurchaseController::class, 'open'])->name('purchase');
 
 // 配送先変更
-Route::get('/purchase/address/{item_id}', [DestinationController::class, 'open'])->name('destination.change');
-Route::post('/purchase/address/{item_id}', [DestinationController::class, 'update'])->name('destination.store');
+Route::get('/purchase/address/{item_id}', [DestinationController::class, 'showDestinationForm'])->name('destination.show');
+Route::post('/purchase/address/{item_id}', [DestinationController::class, 'createOrUpdate'])->name('destination.store');
 
 // お気に入り登録
 Route::post('/favorite/toggle/{item_id}', [ItemDetailController::class, 'toggle'])->name('favorite.toggle');
