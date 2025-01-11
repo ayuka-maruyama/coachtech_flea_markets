@@ -38,7 +38,7 @@ class ProfileController extends Controller
                 $filePath = $profileRequest->file('profile_image')->storeAs('profile_images', $fileName, 'public');
 
                 // 新しい画像のパスを保存
-                $profile->profile_image = 'profile_images/' . $fileName;
+                $profile->profile_image = 'storage/profile_images/' . $fileName;
             }
 
             // プロフィールの更新
