@@ -41,7 +41,7 @@
         </form>
 
         <p class="link register-link">
-            <a href="{{ route('register.open') }}">会員登録はこちら</a>
+            <a href="{{ route('register.form.show') }}">会員登録はこちら</a>
         </p>
 
     </div>
