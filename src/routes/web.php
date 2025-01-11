@@ -1,12 +1,12 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\VerifyEmailController;
-use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ItemDetailController;
 use App\Http\Controllers\MypageController;
-use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SellController;
