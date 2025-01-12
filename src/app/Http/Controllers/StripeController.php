@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Stripe\Stripe;
-use Stripe\Checkout\Session;
-use App\Models\Order;
 use App\Models\Item;
+use App\Models\Order;
+use Stripe\Checkout\Session;
+use Stripe\Stripe;
+use Illuminate\Http\Request;
 
 class StripeController extends Controller
 {
@@ -14,10 +14,8 @@ class StripeController extends Controller
     {
         $order = Order::findOrFail($order_id);
 
-        // Stripe APIキーを設定
         Stripe::setApiKey(config('services.stripe.secret'));
 
-        // Stripe Checkoutセッションの作成
         $session = Session::create([
             'payment_method_types' => ['card'],
             'line_items' => [[
@@ -46,9 +44,8 @@ class StripeController extends Controller
         $order = Order::findOrFail($order_id);
 
         try {
-            // 注文確定と在庫ステータスの更新
             $order->update([
-                'status' => 'completed', // 注文確定ステータス
+                'status' => 'completed',
             ]);
 
             $item = Item::find($order->item_id);

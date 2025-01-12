@@ -22,17 +22,14 @@ class LoginController extends Controller
             $user = Auth::user();
             $profile = Profile::where('user_id', $user->user_id)->first();
 
-            // email_verified_at の確認
             if (!$user->email_verified_at) {
                 return redirect()->route('verification.notice');
             }
 
-            // profileの確認
             if (!$profile) {
                 return redirect()->route('profile.open');
             }
 
-            // 上記条件がすべて不一致の場合
             return redirect()->route('home');
         }
 

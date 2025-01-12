@@ -11,7 +11,6 @@ class DestinationController extends Controller
 {
     public function showDestinationForm($item_id)
     {
-        // profile-change.blade.phpに初期登録したProfileデータを渡す
         if (!$user = Auth::user()) {
             return redirect()->route('login.form.show');
         }
@@ -35,7 +34,7 @@ class DestinationController extends Controller
             $destination->save();
 
             return redirect()
-                ->route(purchase . form . show, ['item_id' => $item_id])
+                ->route('purchase.form.show', ['item_id' => $item_id])
                 ->with('message', '送付先を変更しました');
         } catch (\Exception $e) {
             return redirect()

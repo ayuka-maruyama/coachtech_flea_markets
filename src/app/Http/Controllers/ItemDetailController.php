@@ -3,15 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CommentRequest;
-use Illuminate\Http\Request;
-use App\Models\CategoryItem;
-use App\Models\Category;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Item;
-use App\Models\Favorite;
 use App\Models\Comment;
-use App\Models\Order;
-
+use App\Models\Favorite;
+use App\Models\Item;
+use Illuminate\Support\Facades\Auth;
 
 class ItemDetailController extends Controller
 {
@@ -48,7 +43,6 @@ class ItemDetailController extends Controller
         ));
     }
 
-
     public function sentComment(CommentRequest $request, $item_id)
     {
         $user = Auth::user();
@@ -73,22 +67,18 @@ class ItemDetailController extends Controller
 
     public function toggleFavorite($item_id)
     {
-        // ログインしているユーザーを取得
         $user = Auth::user();
 
         if (!$user) {
             return response()->json(['error' => 'ログインが必要です。'], 401);
         }
 
-        // お気に入りのトグル処理
         $favorite = Favorite::where('user_id', $user->user_id)->where('item_id', $item_id)->first();
 
         if ($favorite) {
-            // 既にお気に入り登録がある場合、削除
             $favorite->delete();
             $isFavorited = false;
         } else {
-            // お気に入りに追加
             Favorite::create([
                 'user_id' => $user->user_id,
                 'item_id' => $item_id,
@@ -96,10 +86,8 @@ class ItemDetailController extends Controller
             $isFavorited = true;
         }
 
-        // お気に入りの件数を取得
         $favoriteCount = Favorite::where('item_id', $item_id)->count();
 
-        // トグル結果をJSONで返す
         return response()->json([
             'isFavorited' => $isFavorited,
             'favoriteCount' => $favoriteCount,
