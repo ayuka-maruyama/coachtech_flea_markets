@@ -11,7 +11,7 @@ use App\Http\Requests\ExhibitionRequest;
 
 class SellController extends Controller
 {
-    public function open()
+    public function showSellForm()
     {
         // ログイン状況を確認して、未ログインならログイン画面へ遷移
         if (!$user = Auth::user()) {

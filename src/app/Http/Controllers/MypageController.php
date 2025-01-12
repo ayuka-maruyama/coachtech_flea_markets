@@ -10,7 +10,7 @@ use App\Models\Order;
 
 class MypageController extends Controller
 {
-    public function open(Request $request)
+    public function showMypageForm(Request $request)
     {
         // ログイン状況を確認して、未ログインならログイン画面へ遷移
         if (!$user = Auth::user()) {

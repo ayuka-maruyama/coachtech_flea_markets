@@ -15,7 +15,7 @@ use App\Models\Order;
 
 class ItemDetailController extends Controller
 {
-    public function open($item_id)
+    public function showItemDetailForm($item_id)
     {
         $item = Item::with('categories')->findOrFail($item_id);
 
@@ -49,7 +49,7 @@ class ItemDetailController extends Controller
     }
 
 
-    public function comment(CommentRequest $request, $item_id)
+    public function sentComment(CommentRequest $request, $item_id)
     {
         $user = Auth::user();
 
@@ -67,11 +67,11 @@ class ItemDetailController extends Controller
             'comment' => $request->comment,
         ]);
 
-        return redirect()->route('detail.open', ['item_id' => $item_id])
+        return redirect()->route('detail.form.show', ['item_id' => $item_id])
             ->with('success', 'コメントを投稿しました。');
     }
 
-    public function toggle($item_id)
+    public function toggleFavorite($item_id)
     {
         // ログインしているユーザーを取得
         $user = Auth::user();

@@ -43,10 +43,10 @@
                 </li>
                 @endif
                 <li class="my-page">
-                    <a href="{{ route('mypage.open') }}" class="nav-btn">マイページ</a>
+                    <a href="{{ route('mypage.form.show') }}" class="nav-btn">マイページ</a>
                 </li>
                 <li class="exhibit">
-                    <a href="{{ route('sell.open') }}" class="nav-btn">出品</a>
+                    <a href="{{ route('sell.form.show') }}" class="nav-btn">出品</a>
                 </li>
             </ul>
         </nav>

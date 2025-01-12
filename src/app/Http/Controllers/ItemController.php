@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
+use App\Models\Favorite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Favorite;
-use App\Models\Item;
-
 
 class ItemController extends Controller
 {
-    public function index(Request $request)
+    public function showItemFrom(Request $request)
     {
         $tab = $request->query('tab', 'suggest');
         $items = collect();

@@ -41,7 +41,7 @@
 
         </div>
 
-        <form action="{{ route('purchase', ['item_id' => $item->item_id]) }}" method="get">
+        <form action="{{ route(purchase.form.show, ['item_id' => $item->item_id]) }}" method="get">
 
             <div class="submit-button">
                 @if ($isPurchased)

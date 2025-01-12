@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Log;
 
 class PurchaseController extends Controller
 {
-    public function open($item_id)
+    public function showPurchaseForm($item_id)
     {
         if (!$user = Auth::user()) {
             return redirect()->route('login.form.show');
@@ -37,7 +37,7 @@ class PurchaseController extends Controller
         return view('purchase', compact('user', 'item', 'destination'));
     }
 
-    public function store(PurchaseRequest $request, $item_id)
+    public function handlePurchase(PurchaseRequest $request, $item_id)
     {
         $user = Auth::user();
 
@@ -95,7 +95,7 @@ class PurchaseController extends Controller
                 return redirect()->route('home')->with('error', '購入処理中にエラーが発生しました。');
             }
 
-            return redirect()->route('mypage.open', ['tab' => 'buy'])->with('message', '購入が完了しました。');
+            return redirect()->route('mypage.form.show', ['tab' => 'buy'])->with('message', '購入が完了しました。');
         }
     }
 }

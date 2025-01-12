@@ -49,7 +49,7 @@ class ProfileController extends Controller
                 'building' => $addressRequest->building,
             ]);
 
-            return redirect()->route('mypage.open')->with('success', 'プロフィールが更新されました');
+            return redirect()->route('mypage.form.show')->with('success', 'プロフィールが更新されました');
         }
 
         // プロフィールがまだ作成されていない場合は新規作成

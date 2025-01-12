@@ -35,11 +35,12 @@ class DestinationController extends Controller
             $destination->save();
 
             return redirect()
-                ->route('purchase', ['item_id' => $item_id])
+                ->route(purchase . form . show, ['item_id' => $item_id])
                 ->with('message', '送付先を変更しました');
         } catch (\Exception $e) {
             return redirect()
                 ->back()
                 ->withErrors(['error' => '送付先の変更に失敗しました。']);
         }
-    }}
+    }
+}
