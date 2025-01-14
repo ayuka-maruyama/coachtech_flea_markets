@@ -24,7 +24,7 @@ class ItemSeeder extends Seeder
         ]);
         DB::table('items')->insert([
             'item_name' => 'HDD',
-            'brand' => 'no brand',
+            'brand' => 'FujitsuFujitsu',
             'price' => 5000,
             'description' => '高速で信頼性の高いハードディスク',
             'condition' => '目立った傷や汚れなし',
@@ -36,7 +36,7 @@ class ItemSeeder extends Seeder
         ]);
         DB::table('items')->insert([
             'item_name' => '玉ねぎ3束',
-            'brand' => 'no brand',
+            'brand' => '北海道産',
             'price' => 300,
             'description' => '新鮮な玉ねぎ3束のセット',
             'condition' => 'やや傷や汚れあり',
@@ -72,7 +72,7 @@ class ItemSeeder extends Seeder
         ]);
         DB::table('items')->insert([
             'item_name' => 'マイク',
-            'brand' => 'no brand',
+            'brand' => 'Elecom',
             'price' => 8000,
             'description' => '高音質のレコーディング用マイク',
             'condition' => '目立った傷や汚れなし',
@@ -84,7 +84,7 @@ class ItemSeeder extends Seeder
         ]);
         DB::table('items')->insert([
             'item_name' => 'ショルダーバッグ',
-            'brand' => 'no brand',
+            'brand' => 'COACH',
             'price' => 3500,
             'description' => 'おしゃれなショルダーバッグ',
             'condition' => 'やや傷や汚れあり',
@@ -120,7 +120,7 @@ class ItemSeeder extends Seeder
         ]);
         DB::table('items')->insert([
             'item_name' => 'メイクセット',
-            'brand' => 'no brand',
+            'brand' => 'A-make',
             'price' => 2500,
             'description' => '便利なメイクアップセット',
             'condition' => '目立った傷や汚れなし',

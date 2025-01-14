@@ -25,6 +25,7 @@ class ExhibitionRequest extends FormRequest
     {
         return [
             'item_name' => 'required|string',
+            'brand' => 'required|string',
             'price' => 'required|numeric|min:1',
             'description' => 'required|string|max:255',
             'condition' => 'required|string',
@@ -38,6 +39,8 @@ class ExhibitionRequest extends FormRequest
     {
         return [
             'item_name.required' => '商品名を入力してください。',
+            'brand.required' => 'ブランド名を入力してください。',
+            'brand.string' => 'ブランド名は文字列で入力してください。',
             'price.required' => '価格を入力してください。',
             'price.numeric' => '価格は数値で入力してください。',
             'price.min' => '価格は0円以上で入力してください。',
