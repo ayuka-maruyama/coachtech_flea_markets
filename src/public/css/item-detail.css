@@ -1,22 +1,25 @@
 .detail-flex {
     display: flex;
     margin: 30px;
-    justify-content: space-between;
+    justify-content: space-around;
     font-size: 12px;
 }
 
 .item-img {
-    width: 45%;
+    width: 20%;
 }
 
 .card-img {
     width: 100%;
     height: auto;
+    max-width: 200px;
+    max-height: 150px;
     margin: 10px 0;
+    object-fit: contain;
 }
 
 .item-detail {
-    width: 50%;
+    width: 65%;
 }
 
 .item-name {
@@ -171,14 +174,14 @@
         margin: 30px auto;
         font-size: 16px;
     }
-    
+
     .item-img {
-        width: 42%;
         max-width: 400px;
+        max-height: 300px;
     }
 
     .item-detail {
-        width: 55%;
+        width: 65%;
         max-width: 600px;
     }
 
@@ -226,19 +229,17 @@
 /* デスクトップサイズのレスポンシブ */
 @media screen and (min-width: 1200px) {
     .detail-flex {
-        width: 90%;
+        width: 80%;
         max-width: 1400px;
-        margin: 30px auto;
         font-size: 18px;
     }
-    
+
     .item-img {
-        width: 42%;
         max-width: 500px;
+        max-height: 375px;
     }
 
     .item-detail {
-        width: 55%;
         max-width: 1000px;
     }
 
