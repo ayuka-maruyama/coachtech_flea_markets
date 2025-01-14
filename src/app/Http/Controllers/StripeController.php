@@ -58,7 +58,7 @@ class StripeController extends Controller
             return redirect()->route('home')->with('error', '注文の確定処理中にエラーが発生しました。');
         }
 
-        return redirect()->route('mypage.form.show', ['tab' => 'buy'])->with('message', '購入が完了しました。');
+        return redirect()->route('mypage.form.show', ['page' => 'buy'])->with('message', '購入が完了しました。');
     }
 
     public function cancel()
