@@ -2,28 +2,14 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-
 
 class CategoryItemSeeder extends Seeder
 {
     public function run(): void
     {
-        // Item::all()->each(
-        //     function ($item) {
-        //         // まず必ず1つのカテゴリーを選んで紐づけ
-        //         $firstCategory = Category::inRandomOrder()->first();
-
-        //         // 中間テーブルに追加
-        //         category_item::create([
-        //             'category_id' => $firstCategory->category_id,
-        //             'item_id' => $item->item_id,
-        //         ]);
-        //     }
-        // );
-        // category_item::factory()->count(5)->create();
         DB::table('category_item')->insert([
             'category_id' => 1,
             'item_id' => 1,
