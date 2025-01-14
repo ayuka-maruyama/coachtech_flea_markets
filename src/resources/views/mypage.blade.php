@@ -21,9 +21,9 @@
     </div>
 
     <!-- ユーザーの出品・購入した商品一覧タブ -->
-    <div class="tab">
-        <a href="/mypage?tab=sell" class="sell-item @if($tab === 'sell') span @endif">出品した商品</a>
-        <a href="/mypage?tab=buy" class="buy-item @if($tab === 'buy') span @endif">購入した商品</a>
+    <div class="page">
+        <a href="/mypage?page=sell" class="sell-item @if($page === 'sell') span @endif">出品した商品</a>
+        <a href="/mypage?page=buy" class="buy-item @if($page === 'buy') span @endif">購入した商品</a>
     </div>
 
     <!-- 出品or購入した商品一覧 -->

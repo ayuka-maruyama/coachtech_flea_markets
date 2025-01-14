@@ -90,7 +90,7 @@ class PurchaseController extends Controller
                 return redirect()->route('home')->with('error', '購入処理中にエラーが発生しました。');
             }
 
-            return redirect()->route('mypage.form.show', ['tab' => 'buy'])->with('message', '購入が完了しました。');
+            return redirect()->route('mypage.form.show', ['page' => 'buy'])->with('message', '購入が完了しました。');
         }
     }
 }

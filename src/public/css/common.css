@@ -103,7 +103,8 @@
     font-size: 12px;
 }
 
-.tab {
+.tab,
+.page {
     margin: 20px 0;
     padding-bottom: 10px;
     border-bottom: 1px solid black;

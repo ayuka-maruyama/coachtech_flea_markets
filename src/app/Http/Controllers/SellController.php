@@ -49,6 +49,6 @@ class SellController extends Controller
         $item->item_image = '/storage/item_image/' . $fileName;
         $item->save();
 
-        return redirect('/mypage?tab=sell')->with('success', '商品が正常に登録されました。');
+        return redirect()->route('mypage.form.show', ['page' => 'sell'])->with('success', '商品が正常に登録されました。');
     }
 }

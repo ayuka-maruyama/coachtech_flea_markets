@@ -16,26 +16,26 @@ class MypageController extends Controller
         }
 
         if (!$user->profile) {
-            return redirect()->route('profile.open')->with('message', 'プロフィールを設定してください');
+            return redirect()->route('profile.open', ['page' => 'sell'])->with('message', 'プロフィールを設定してください');
         }
 
         $profile = $user->profile;
 
-        $tab = $request->query('tab', 'sell');
+        $page = $request->query('page', 'sell');
 
         $items = collect();
 
         if (
-            $tab === 'buy'
+            $page === 'buy'
         ) {
             $items = Order::where('user_id', $user->user_id)
                 ->with('item')
                 ->get()
                 ->pluck('item');
-        } elseif ($tab === 'sell') {
+        } elseif ($page === 'sell') {
             $items = Item::where('user_id', $user->user_id)->get();
         }
 
-        return view('mypage', compact('user', 'profile', 'items', 'tab'));
+        return view('mypage', compact('user', 'profile', 'items', 'page'));
     }
 }

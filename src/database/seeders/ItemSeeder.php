@@ -24,7 +24,7 @@ class ItemSeeder extends Seeder
         ]);
         DB::table('items')->insert([
             'item_name' => 'HDD',
-            'brand' => 'FujitsuFujitsu',
+            'brand' => 'Fujitsu',
             'price' => 5000,
             'description' => '高速で信頼性の高いハードディスク',
             'condition' => '目立った傷や汚れなし',
