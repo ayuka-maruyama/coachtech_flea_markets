@@ -42,7 +42,8 @@ class SellController extends Controller
         $item->categories()->sync($request->category_ids);
 
         $extension = $request->file('item_image')->getClientOriginalExtension();
-        $fileName = 'Item' . Auth::id() . '_' . time() . '.' . $extension;
+        $safeItemName = preg_replace('/[^\p{L}\p{N}_\-]/u', '_', $item->item_name);
+        $fileName = 'Item_' . $safeItemName . '_' . time() . '.' . $extension;
 
         $filePath = $request->file('item_image')->storeAs('item_image', $fileName, 'public');
 

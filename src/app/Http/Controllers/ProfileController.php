@@ -29,7 +29,7 @@ class ProfileController extends Controller
                 }
 
                 $extension = $profileRequest->file('profile_image')->getClientOriginalExtension();
-                $fileName = 'Profile' . Auth::id() . '_' . time() . '.' . $extension;
+                $fileName = 'Profile' . Auth::id() . '.' . $extension;
                 $filePath = $profileRequest->file('profile_image')->storeAs('profile_images', $fileName, 'public');
 
                 $profile->profile_image = 'storage/profile_images/' . $fileName;
