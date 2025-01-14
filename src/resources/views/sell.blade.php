@@ -22,11 +22,11 @@
                 </div>
             </div>
             <div class="image-upload-container">
-                <label for="image-input" class="btn">
+                <label for="image-input" id="image-upload-btn" class="btn">
                     画像を選択する
                 </label>
                 <input type="file" id="image-input" name="item_image" class="image-input" accept="image/*" style="display: none;" />
-                <div class="image-container" id="image-preview-container" style="display: none;">
+                <div class="image-preview-container" id="image-preview-container" style="display: none;">
                     <img id="image-preview" class="image-preview" src="#" alt="選択された画像" />
                 </div>
             </div>
@@ -76,10 +76,11 @@
         </div>
 
         <!-- 商品名と説明 -->
-        <div class="item-detail-container">
+        <div class="item-description-container">
             <h2 class="detail-ttl">商品名と説明</h2>
 
             <div class="item-container">
+
                 <div class="item-name">
                     <div class="flex">
                         <h3 class="item-ttl">商品名</h3>
@@ -91,7 +92,20 @@
                     </div>
                     <input type="text" name="item_name" id="item_name" class="form-input">
                 </div>
-                <div class="item-description">
+
+                <div class="item-brand">
+                    <div class="flex">
+                        <h3 class="item-ttl">ブランド</h3>
+                        <div class="error">
+                            @error('brand')
+                            <p>{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+                    <input type="text" name="brand" id="brand" class="form-input">
+                </div>
+
+                <div class="item-description-area">
                     <div class="flex">
                         <h3 class="item-ttl">商品の説明</h3>
                         <div class="error">
@@ -100,8 +114,9 @@
                             @enderror
                         </div>
                     </div>
-                    <textarea name="description" id="description" class="form-input"></textarea>
+                    <textarea name="description" id="description" class="form-input description"></textarea>
                 </div>
+
                 <div class="item-price">
                     <div class="flex">
                         <h3 class="item-ttl">販売価格</h3>
@@ -113,10 +128,13 @@
                     </div>
                     <input type="text" id="price" name="price" class="form-input" required>
                 </div>
+
             </div>
 
-            <button type="submit" class="btn submit-btn">登録する</button>
         </div>
+
+        <button type="submit" class="btn submit-btn">登録する</button>
+
     </form>
 </div>
 @endsection

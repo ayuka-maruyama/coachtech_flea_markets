@@ -6,7 +6,7 @@
 
 .image-container {
     width: 100%;
-    height: 200px;
+    height: 400px;
 }
 
 .image-ttl,
@@ -20,7 +20,7 @@
 .image-upload-container {
     border: 2px dashed #ddd;
     width: 100%;
-    height: 65%;
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,7 +40,7 @@
 
 .image-preview-container {
     width: 100%; /* 枠全体の幅 */
-    height: 100%; /* 枠全体の高さ */
+    height: auto; /* 枠全体の高さ */
     display: flex;
     justify-content: center; /* 水平方向のセンタリング */
     align-items: center; /* 垂直方向のセンタリング */
@@ -48,9 +48,9 @@
 }
 
 .image-preview {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* 枠全体に画像を表示し、比率を保つ */
+    width: 100%; /* 幅を親要素に合わせる */
+    object-fit: cover; /* 画像の比率を保つ */
+    display: block; /* inline要素の余白を削除 */
 }
 
 .item-detail-container {
@@ -124,6 +124,12 @@
     height: 100px;
 }
 
+.item-description-container {
+    width: 100%;
+    height: 500px;
+}
+
+
 .item_name,
 .price {
     width: 100%;
@@ -132,14 +138,14 @@
     padding: 5px 10px;
 }
 
-.item-description {
+.item-description-area {
     width: 100%;
     height: 130px;
 }
 
 .description {
     width: 100%;
-    height: 80px;
+    height: 90px;
     border: 1px solid black;
     border-radius: 5px;
     padding: 5px 10px;

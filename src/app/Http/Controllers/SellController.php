@@ -30,7 +30,7 @@ class SellController extends Controller
 
         $item = Item::create([
             'item_name' => $request->item_name,
-            'brand' => 'no brand',
+            'brand' => $request->brand,
             'price' => $request->price,
             'description' => $request->description,
             'condition' => $request->condition,

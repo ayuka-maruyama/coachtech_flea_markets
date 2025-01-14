@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // 初期状態で￥マークを設定
     const input = document.getElementById("price");
     if (!input.value) {
-        input.value = "￥"; // 初期値として￥0を設定
+        input.value = "￥"; // 初期値として￥を設定
     }
 
     // 選択されたカテゴリーIDを格納する配列
@@ -37,28 +37,63 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // 画像プレビューの表示
-    document
-        .getElementById("image-input")
-        .addEventListener("change", function (event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    const imagePreview =
-                        document.getElementById("image-preview");
-                    imagePreview.src = e.target.result;
-                    document.getElementById(
-                        "image-preview-container"
-                    ).style.display = "flex";
+    // 画像プレビューの表示とボタン非表示
+    const imageInput = document.getElementById("image-input");
+    const imagePreview = document.getElementById("image-preview");
+    const imagePreviewContainer = document.getElementById(
+        "image-preview-container"
+    );
+    const imageUploadBtn = document.getElementById("image-upload-btn");
 
-                    // ボタンを非表示
-                    document.getElementById("select-button").style.display =
-                        "none";
+    imageInput.addEventListener("change", function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                imagePreview.src = e.target.result;
+                imagePreviewContainer.style.display = "flex"; // プレビューコンテナを表示
+                imageUploadBtn.style.display = "none"; // ボタンを非表示にする
+
+                // 画像が読み込まれたときにサイズを調整
+                imagePreview.onload = function () {
+                    // 最大幅と最大高さを設定
+                    const maxWidth = 590; // 最大幅
+                    const maxHeight = 290; // 最大高さ
+
+                    // 現在の画像の幅と高さ
+                    const originalWidth = imagePreview.naturalWidth;
+                    const originalHeight = imagePreview.naturalHeight;
+
+                    // アスペクト比を計算
+                    const aspectRatio = originalWidth / originalHeight;
+
+                    // 新しい幅と高さを設定
+                    let newWidth = originalWidth;
+                    let newHeight = originalHeight;
+
+                    // 画像が最大幅より大きい場合
+                    if (newWidth > maxWidth) {
+                        newWidth = maxWidth;
+                        newHeight = newWidth / aspectRatio;
+                    }
+
+                    // 画像が最大高さより大きい場合
+                    if (newHeight > maxHeight) {
+                        newHeight = maxHeight;
+                        newWidth = newHeight * aspectRatio;
+                    }
+
+                    // 新しいサイズを画像に適用
+                    imagePreview.style.width = `${newWidth}px`;
+                    imagePreview.style.height = `${newHeight}px`;
+
+                    // 画像がコンテナ内に収まるように設定
+                    imagePreview.style.objectFit = "contain"; // アスペクト比を維持して収める
                 };
-                reader.readAsDataURL(file);
-            }
-        });
+            };
+            reader.readAsDataURL(file);
+        }
+    });
 
     // 価格入力にカンマと￥マークを追加
     input.addEventListener("input", function () {
@@ -68,15 +103,15 @@ document.addEventListener("DOMContentLoaded", function () {
     function addYenSymbol() {
         let value = input.value;
 
-        // 全角数字を半角に変換
-        value = convertToHalfWidth(value.replace(/[^\d０-９]/g, "")); // 数字以外を削除
+        // 全角数字を半角に変換し、数字以外を削除
+        value = convertToHalfWidth(value.replace(/[^\d０-９]/g, ""));
 
         if (value) {
             // 数値にカンマ区切りを追加
             value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             input.value = "￥" + value; // ￥マークを先頭に追加
         } else {
-            input.value = "￥"; // 数字が空の場合は￥0を表示
+            input.value = "￥"; // 数字が空の場合は￥のみ表示
         }
     }
 
