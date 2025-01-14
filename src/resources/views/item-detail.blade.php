@@ -87,16 +87,17 @@
         </div>
 
         <div class="comment-sent">
-            <h3 class="sent-ttl">商品へのコメント</h3>
-            <form action="{{ route('comment', ['item_id' => $item->item_id]) }}" method="post">
-                @csrf
-                <textarea class="comment-textarea" name="comment" id="comment" rows="5"></textarea>
-
+            <div class="flex">
+                <h3 class="sent-ttl">商品へのコメント</h3>
                 <div class="error">
                     @error('comment')
                     <p>{{ $message }}</p>
                     @enderror
                 </div>
+            </div>
+            <form action="{{ route('comment', ['item_id' => $item->item_id]) }}" method="post">
+                @csrf
+                <textarea class="comment-textarea" name="comment" id="comment" rows="5"></textarea>
 
                 <button type="submit" class="submit">コメントを送信する</button>
             </form>

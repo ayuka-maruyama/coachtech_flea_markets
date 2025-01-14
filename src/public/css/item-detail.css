@@ -166,6 +166,10 @@
     margin: 10px 0 20px;
 }
 
+.error {
+    margin-left: 20px;
+}
+
 /* タブレットサイズのレスポンシブ */
 @media screen and (min-width: 768px) {
     .detail-flex {
