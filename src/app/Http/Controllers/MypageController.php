@@ -23,12 +23,16 @@ class MypageController extends Controller
 
         $tab = $request->query('tab', 'sell');
 
-        if ($tab === 'buy') {
+        $items = collect();
+
+        if (
+            $tab === 'buy'
+        ) {
             $items = Order::where('user_id', $user->user_id)
                 ->with('item')
                 ->get()
                 ->pluck('item');
-
+        } elseif ($tab === 'sell') {
             $items = Item::where('user_id', $user->user_id)->get();
         }
 
