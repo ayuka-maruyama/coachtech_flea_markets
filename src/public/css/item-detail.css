@@ -12,8 +12,8 @@
 .card-img {
     width: 100%;
     height: auto;
-    max-width: 200px;
-    max-height: 150px;
+    max-width: 120px;
+    max-height: 120px;
     margin: 10px 0;
     object-fit: contain;
 }
@@ -175,9 +175,9 @@
         font-size: 16px;
     }
 
-    .item-img {
-        max-width: 400px;
-        max-height: 300px;
+    .card-img {
+        max-width: 150px;
+        max-height: 150px;
     }
 
     .item-detail {
@@ -234,9 +234,9 @@
         font-size: 18px;
     }
 
-    .item-img {
-        max-width: 500px;
-        max-height: 375px;
+    .card-img {
+        max-width: 200px;
+        max-height: 200px;
     }
 
     .item-detail {
