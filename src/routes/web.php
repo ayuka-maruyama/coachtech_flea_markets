@@ -44,7 +44,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // 商品詳細画面
 Route::get('/item/{item_id}', [ItemDetailController::class, 'showItemDetailForm'])->name('detail.form.show');
 Route::post('/item/{item_id}', [ItemDetailController::class, 'showItemDetailForm'])->name('detail.form.show');
-Route::post('/item/{item_id}/comment', [ItemDetailController::class, 'sentComment'])->name('comment');
+Route::post('/item/{item_id}/comment', [ItemDetailController::class, 'sentComment'])->middleware('auth')->name('comment');
 
 // 商品購入
 Route::get('/purchase/{item_id}', [PurchaseController::class, 'showPurchaseForm'])->name('purchase.form.show');
