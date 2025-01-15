@@ -30,7 +30,7 @@ class LoginController extends Controller
                 return redirect()->route('profile.open');
             }
 
-            return redirect()->route('home');
+            return redirect()->route('home', ['tab' => 'mylist']);
         }
 
         return back()->withErrors([
