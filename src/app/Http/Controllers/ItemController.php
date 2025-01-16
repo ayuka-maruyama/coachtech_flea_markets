@@ -29,7 +29,10 @@ class ItemController extends Controller
                 $favoriteItemIds = Favorite::where('user_id', $user->user_id)
                     ->orderBy('item_id', 'asc')
                     ->pluck('item_id');
-                $items = Item::whereIn('item_id', $favoriteItemIds)->get();
+                    
+                $items = Item::whereIn('item_id', $favoriteItemIds)
+                ->where('user_id', '!=', $user->user_id)
+                ->get();
             }
         }
 
