@@ -61,14 +61,11 @@ class Test04ItemTest extends TestCase
     // ログインしてアクセスした時に自分が出品した商品が表示されない
     public function testUserDoesNotSeeOwnItems()
     {
-        // ダミーユーザーでログイン
         $user = User::first();
         $this->actingAs($user);
 
-        // 商品リストページにアクセス
-        $response = $this->get('/'); // ルートが正しいか確認
+        $response = $this->get('/');
 
-        // ステータスコードを確認
         $response->assertStatus(200);
 
         // ログインユーザーの商品名はページに含まれていないことを確認
