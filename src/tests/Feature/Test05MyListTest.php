@@ -42,7 +42,7 @@ class Test05MyListTest extends TestCase
         $response->assertStatus(200);
 
         // ログインユーザーのお気に入り商品を取得
-        $favoriteItems = Item::whereHas('favorites', function ($query) use ($user) {
+        $favoriteItems = Item::whereHas('favorite', function ($query) use ($user) {
             $query->where('user_id', $user->user_id);
         })->get();
 
