@@ -5,11 +5,10 @@ namespace Tests\Feature;
 use App\Models\Favorite;
 use App\Models\Item;
 use App\Models\User;
-use Database\Seeders\ItemSeeder;
 use Database\Seeders\FavoriteSeeder;
+use Database\Seeders\ItemSeeder;
 use Database\Seeders\UserSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
