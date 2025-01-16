@@ -17,7 +17,7 @@ class Category extends Model
     protected $fillable = ['category_name'];
     protected $dates = ['created_at', 'updated_at'];
 
-    public function items()
+    public function item()
     {
         return $this->belongsToMany(Item::class, 'category_item', 'category_id', 'item_id')->withTimestamps();
     }

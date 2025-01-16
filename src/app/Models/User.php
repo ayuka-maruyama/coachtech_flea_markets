@@ -44,13 +44,13 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Profile::class, 'user_id', 'user_id');
     }
 
-    public function favorites()
+    public function favorite()
     {
         return $this->hasMany(Favorite::class, 'user_id');
     }
 
-    public function comments()
+    public function comment()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class, 'user_id');
     }
 }

@@ -17,7 +17,7 @@ class Item extends Model
     protected $fillable = ['item_name', 'brand', 'price', 'description', 'condition', 'item_image', 'stock_status', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 
-    public function favorites()
+    public function favorite()
     {
         return $this->hasMany(Favorite::class, 'item_id');
     }
@@ -27,9 +27,9 @@ class Item extends Model
         return $this->hasOne(Order::class);
     }
 
-    public function comments()
+    public function comment()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class, 'item_id');
     }
 
     public function categories()

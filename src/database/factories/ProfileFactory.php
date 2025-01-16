@@ -14,7 +14,7 @@ class ProfileFactory extends Factory
             'postal_number' => preg_replace('/^(\d{3})(\d{4})$/', '$1-$2', fake()->postcode()),
             'address' => $this->faker->prefecture() . $this->faker->city() . $this->faker->streetAddress(),
             'building' => $this->faker->secondaryAddress(),
-            'profile_image' => null,
+            'profile_image' => 'image/default.jpg',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
