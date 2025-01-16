@@ -4,16 +4,20 @@ namespace Tests\Feature;
 
 use Database\Seeders\UserSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
-class LogoutTest extends TestCase
+class Test03LogoutTest extends TestCase
 {
     use RefreshDatabase;
 
-    // テスト開始前にusersテーブルのシーディングデータを反映させる
     public function setUp(): void
     {
         parent::setup();
+
+        $this->artisan('migrate:fresh');
+
+        DB::statement('ALTER TABLE users AUTO_INCREMENT = 1;');
 
         $this->seed(UserSeeder::class);
     }

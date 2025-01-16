@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
-class RegisterTest extends TestCase
+class Test01RegisterTest extends TestCase
 {
     use RefreshDatabase;
 

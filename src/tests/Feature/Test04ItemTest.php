@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
-class ItemTest extends TestCase
+class Test04ItemTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -72,7 +72,7 @@ class ItemTest extends TestCase
         $response->assertStatus(200);
 
         // ログインユーザーの商品名はページに含まれていないことを確認
-        Item::where('user_id', $user->id)->pluck('item_name')->each(function ($itemName) use ($response) {
+        Item::where('user_id', $user->user_id)->pluck('item_name')->each(function ($itemName) use ($response) {
             $response->assertDontSee($itemName);
         });
     }
