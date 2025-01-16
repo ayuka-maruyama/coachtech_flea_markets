@@ -2,29 +2,37 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
-use App\Models\Favorite;
+use Illuminate\Support\Facades\DB;
 
 class FavoriteSeeder extends Seeder
 {
     public function run(): void
     {
-        $maxCount = 10;
-        $count = 0;
-
-        while ($count < $maxCount) {
-            $favorite = Favorite::factory()->make();
-
-            if ($favorite->item_id && $favorite->user_id) {
-                $exists = Favorite::where('item_id', $favorite->item_id)
-                    ->where('user_id', $favorite->user_id)
-                    ->exists();
-
-                if (!$exists) {
-                    $favorite->save();
-                    $count++;
-                }
-            }
-        }
+        DB::table('favorites')->insert([
+            'item_id' => 3,
+            'user_id' => 1,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('favorites')->insert([
+            'item_id' => 4,
+            'user_id' => 1,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('favorites')->insert([
+            'item_id' => 1,
+            'user_id' => 2,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('favorites')->insert([
+            'item_id' => 2,
+            'user_id' => 2,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
     }
 }
