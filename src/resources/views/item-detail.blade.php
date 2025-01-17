@@ -17,7 +17,7 @@
 
         <div class="image-flex">
             <div class="favorite-icon">
-                <button class=" favorite-btn {{ $isFavorited ? 'favorite' : '' }}" id="favorite-btn" data-item-id="{{ $item->item_id }}">
+                <button class="favorite-btn {{ $isFavorited ? 'favorite' : '' }}" id="favorite-btn" data-item-id="{{ $item->item_id }}">
                     @if ($isFavorited)
                     <!-- お気に入り登録されている場合のSVG（AのSVGファイル） -->
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="btn-image">
