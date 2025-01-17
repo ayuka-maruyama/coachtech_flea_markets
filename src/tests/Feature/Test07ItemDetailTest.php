@@ -12,7 +12,6 @@ use Database\Seeders\FavoriteSeeder;
 use Database\Seeders\ItemSeeder;
 use Database\Seeders\ProfileSeeder;
 use Database\Seeders\UserSeeder;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
