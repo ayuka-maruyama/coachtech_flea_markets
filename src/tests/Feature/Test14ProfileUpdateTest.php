@@ -8,6 +8,7 @@ use Database\Seeders\ItemSeeder;
 use Database\Seeders\ProfileSeeder;
 use Database\Seeders\UserSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 class Test14ProfileUpdateTest extends TestCase
@@ -19,6 +20,10 @@ class Test14ProfileUpdateTest extends TestCase
         parent::setUp();
 
         $this->artisan('migrate:fresh');
+
+        DB::statement('ALTER TABLE users AUTO_INCREMENT = 1;');
+        DB::statement('ALTER TABLE items AUTO_INCREMENT = 1;');
+        DB::statement('ALTER TABLE profiles AUTO_INCREMENT = 1;');
 
         $this->seed(UserSeeder::class);
         $this->seed(ItemSeeder::class);
