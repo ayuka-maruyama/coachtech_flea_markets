@@ -4,7 +4,6 @@
     margin: 25px auto;
 }
 
-/* フレックス時の割合 */
 .purchase-info {
     width: 80%;
     margin: 0 auto;
@@ -15,7 +14,6 @@
     margin: 20px auto;
 }
 
-/* 各エリアの最後に線 */
 .item-info,
 .payment,
 .address {

@@ -16,7 +16,6 @@ class Test08FavoriteTest extends TestCase
 {
     use RefreshDatabase;
 
-    // テスト開始前にusersテーブルのシーディングデータを反映させる
     public function setUp(): void
     {
         parent::setup();

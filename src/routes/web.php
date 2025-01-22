@@ -56,7 +56,7 @@ Route::post('/purchase/address/{item_id}', [DestinationController::class, 'creat
 // お気に入り登録
 Route::post('/favorite/toggle/{item_id}', [ItemDetailController::class, 'toggleFavorite'])->name('favorite.toggle');
 
-// マイページ遷移
+// ログイン、メール認証済みルート
 Route::middleware('auth', 'verified')->group(function () {
     Route::post('/purchase/order/{item_id}', [PurchaseController::class, 'handlePurchase'])->name('purchase.store');
     Route::get('/stripe/checkout/{order_id}', [StripeController::class, 'checkout'])->name('stripe.checkout');

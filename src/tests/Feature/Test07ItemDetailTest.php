@@ -20,7 +20,6 @@ class Test07ItemDetailTest extends TestCase
 {
     use RefreshDatabase;
 
-    // テスト開始前にusers,itemsテーブルのシーディングデータを反映させる
     public function setUp(): void
     {
         parent::setup();

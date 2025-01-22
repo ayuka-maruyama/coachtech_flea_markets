@@ -11,7 +11,6 @@
     <form action="{{ route('sell.store') }}" method="post" enctype="multipart/form-data">
         @csrf
 
-        <!-- 商品画像表示部分 -->
         <div class="image-container">
             <div class="flex">
                 <h2 class="image-ttl">商品画像</h2>
@@ -21,6 +20,7 @@
                     @enderror
                 </div>
             </div>
+
             <div class="image-upload-container">
                 <label for="image-input" id="image-upload-btn" class="btn">
                     画像を選択する
@@ -32,11 +32,9 @@
             </div>
         </div>
 
-        <!-- 商品詳細情報部分 -->
         <div class="item-detail-container">
             <h2 class="detail-ttl">商品の詳細</h2>
 
-            <!-- カテゴリー部分 -->
             <div class="category-container">
                 <div class="category-select">
                     <div class="flex">
@@ -47,11 +45,13 @@
                             @enderror
                         </div>
                     </div>
+
                     <div class="categories">
                         @foreach($categories as $category)
                         <button type="button" class="category btn" data-category-id="{{ $category->category_id }}">{{ $category->category_name }}</button>
                         @endforeach
                     </div>
+
                     <input type="hidden" id="category-input" name="category_id">
                 </div>
 
@@ -64,6 +64,7 @@
                             @enderror
                         </div>
                     </div>
+
                     <select name="condition" id="condition" class="condition">
                         <option value="" selected>選択してください</option>
                         <option value="良好">良好</option>
@@ -75,7 +76,6 @@
             </div>
         </div>
 
-        <!-- 商品名と説明 -->
         <div class="item-description-container">
             <h2 class="detail-ttl">商品名と説明</h2>
 

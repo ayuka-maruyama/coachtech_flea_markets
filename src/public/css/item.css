@@ -17,21 +17,18 @@
     font-weight: bold;
 }
 
-/* タブレットサイズのレスポンシブ */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
     .item-content {
         font-size: 16px;
     }
 }
 
-/* モバイルサイズのレスポンシブ */
 @media screen and (max-width: 767px) {
     .item-content {
         font-size: 14px;
     }
 }
 
-/* デスクトップサイズのレスポンシブ */
 @media screen and (min-width: 1200px) {
     .item-content {
         font-size: 20px;

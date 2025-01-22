@@ -28,6 +28,7 @@ class Test15SellControllerTest extends TestCase
         $this->seed(CategorySeeder::class);
     }
 
+    // 商品出品画面で必要な情報が保存できる
     public function testItCanStoreAnItem()
     {
         $user = User::first();
@@ -35,10 +36,8 @@ class Test15SellControllerTest extends TestCase
 
         $categories = Category::whereIn('category_id', [3, 4])->get();
 
-        // ダミー画像作成
         $image = UploadedFile::fake()->image('item.jpg');
 
-        // リクエストデータ作成
         $requestData = [
             'item_name' => 'テスト商品',
             'brand' => 'テストブランド',
@@ -50,13 +49,11 @@ class Test15SellControllerTest extends TestCase
             'user_id' => $user->user_id,
         ];
 
-        // ログインした状態でPOSTリクエストを送信
         $response = $this->actingAs($user)->post(route('sell.store'), $requestData);
 
         $response->assertRedirect(route('mypage.form.show', ['page' => 'sell']));
         $response->assertSessionHas('success', '商品が正常に登録されました。');
 
-        // データベースの確認
         $this->assertDatabaseHas('items', [
             'item_name' => 'テスト商品',
             'brand' => 'テストブランド',
@@ -66,7 +63,6 @@ class Test15SellControllerTest extends TestCase
             'user_id' => $user->user_id,
         ]);
 
-        // カテゴリー関連の確認
         $item = \App\Models\Item::where('item_name', 'テスト商品')->first();
         $this->assertNotNull($item);
         $this->assertEqualsCanonicalizing($categories->pluck('category_id')->toArray(), $item->categories->pluck('category_id')->toArray());
@@ -78,7 +74,6 @@ class Test15SellControllerTest extends TestCase
             ]);
         }
 
-        // アップロード画像の確認
         $this->assertFileExists(public_path($item->item_image));
     }
 }

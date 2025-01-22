@@ -22,7 +22,6 @@
     background: linear-gradient(transparent 50%, #fddb8a 50%);
 }
 
-/* タブレットサイズのレスポンシブ */
 @media screen and (min-width: 768px) {
     .thanks-area {
         width: 500px;
@@ -34,7 +33,6 @@
     }
 }
 
-/* デスクトップサイズのレスポンシブ */
 @media screen and (min-width: 1200px) {
     .thanks-area {
         width: 700px;

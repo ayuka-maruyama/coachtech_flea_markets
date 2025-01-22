@@ -13,7 +13,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .image-preview {
@@ -27,7 +27,6 @@
     margin-bottom: 0;
 }
 
-/* タブレットサイズのレスポンシブ */
 @media screen and (min-width: 768px) {
     .preview-area {
         width: 65px;
@@ -35,7 +34,6 @@
     }
 }
 
-/* デスクトップサイズのレスポンシブ */
 @media screen and (min-width: 1200px) {
     .preview-area {
         width: 75px;

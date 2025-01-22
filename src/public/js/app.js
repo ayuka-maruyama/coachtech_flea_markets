@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (itemNameInput) {
         itemNameInput.addEventListener("input", function () {
             filterItems();
-            updateTabLinks(); // 検索入力の変更時にタブリンクを更新
+            updateTabLinks();
         });
     }
 

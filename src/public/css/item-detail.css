@@ -170,7 +170,6 @@
     margin-left: 20px;
 }
 
-/* タブレットサイズのレスポンシブ */
 @media screen and (min-width: 768px) {
     .detail-flex {
         width: 90%;
@@ -230,7 +229,6 @@
     }
 }
 
-/* デスクトップサイズのレスポンシブ */
 @media screen and (min-width: 1200px) {
     .detail-flex {
         width: 80%;

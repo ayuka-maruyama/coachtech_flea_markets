@@ -39,18 +39,18 @@
 }
 
 .image-preview-container {
-    width: 100%; /* 枠全体の幅 */
-    height: auto; /* 枠全体の高さ */
+    width: 100%;
+    height: auto;
     display: flex;
-    justify-content: center; /* 水平方向のセンタリング */
-    align-items: center; /* 垂直方向のセンタリング */
-    overflow: hidden; /* 枠から画像がはみ出ないようにする */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .image-preview {
-    width: 100%; /* 幅を親要素に合わせる */
-    object-fit: cover; /* 画像の比率を保つ */
-    display: block; /* inline要素の余白を削除 */
+    width: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .item-detail-container {
@@ -79,8 +79,8 @@
 
 .categories {
     display: flex;
-    flex-wrap: wrap; /* ボタンを折り返し */
-    gap: 6px; /* ボタン間の余白 */
+    flex-wrap: wrap;
+    gap: 6px;
     font-size: 10px;
     margin: 0 5px;
 }
@@ -89,19 +89,19 @@
     border: 1px solid #FF5555;
     color: #FF5555;
     padding: 5px 15px;
-    border-radius: 30px; /* 丸みを追加 */
+    border-radius: 30px;
     background-color: white;
     cursor: pointer;
-    transition: all 0.3s ease; /* アニメーション効果 */
+    transition: all 0.3s ease;
 }
 
 .category:hover {
-    background-color: white; /* ホバー時の背景色 */
+    background-color: white;
 }
 
 .category.active {
-    background-color: #FF5555; /* 選択時の背景色 */
-    color: white; /* 選択時の文字色 */
+    background-color: #FF5555;
+    color: white;
     border-color: #FF5555;
 }
 
@@ -111,9 +111,9 @@
     border: 1px solid black;
     border-radius: 5px;
     background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>') no-repeat;
-    background-size: 10px; /* アイコンのサイズ */
-    background-position: right 10px center; /* アイコンの位置 */
-    background-color: #fff; /* 背景色 */
+    background-size: 10px;
+    background-position: right 10px center;
+    background-color: #fff;
     cursor: pointer;
 }
 
@@ -158,7 +158,7 @@
 }
 
 .input-wrapper input {
-    padding-left: 20px; /* ￥マークのスペース */
+    padding-left: 20px;
 }
 
 .submit {
@@ -203,7 +203,7 @@
     }
 
     .categories {
-        gap: 10px; /* ボタン間の余白 */
+        gap: 10px;
         font-size: 14px;
     }
 

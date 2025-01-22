@@ -7,8 +7,6 @@ use App\Models\User;
 use Database\Seeders\ItemSeeder;
 use Database\Seeders\UserSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
@@ -16,7 +14,6 @@ class Test04ItemTest extends TestCase
 {
     use RefreshDatabase;
 
-    // テスト開始前にusersテーブルのシーディングデータを反映させる
     public function setUp(): void
     {
         parent::setup();
@@ -68,7 +65,6 @@ class Test04ItemTest extends TestCase
 
         $response->assertStatus(200);
 
-        // ログインユーザーの商品名はページに含まれていないことを確認
         Item::where('user_id', $user->user_id)->pluck('item_name')->each(function ($itemName) use ($response) {
             $response->assertDontSee($itemName);
         });

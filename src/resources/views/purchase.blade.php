@@ -6,14 +6,11 @@
 
 @section('content')
 <div class="purchase">
-    <!-- 購入フォーム -->
     <form method="POST" action="{{ route('purchase.store', ['item_id' => $item->item_id]) }}">
         @csrf
         <div class="purchase-flex">
 
-            <!-- 商品情報、購入情報選択エリア -->
             <div class="purchase-info">
-                <!-- 商品情報 -->
                 <div class="item-info">
                     <img class="item-img" src="{{ asset($item->item_image) }}" alt="{{ $item->item_name }}">
                     <div class="item">
@@ -22,7 +19,6 @@
                     </div>
                 </div>
 
-                <!-- 支払方法選択 -->
                 <div class="payment">
                     <h3 class="payment-ttl">支払い方法</h3>
                     <div class="select">
@@ -36,7 +32,6 @@
                     </div>
                 </div>
 
-                <!-- 配送先表示 -->
                 <div class="address">
                     <div class="address-flex">
                         <h3 class="address-ttl">配送先</h3>
@@ -45,7 +40,7 @@
                     <p class="profile-address">〒{{ $destination->postal_number }}</p>
                     <p class="profile-address">{{ $destination->address }}</p>
                     <p class="profile-address">{{ $destination->building }}</p>
-                    <!-- 配送先情報を送信 -->
+
                     <input type="hidden" name="postal_number" value="{{ $destination->postal_number }}">
                     <input type="hidden" name="address" value="{{ $destination->address }}">
                     <input type="hidden" name="building" value="{{ $destination->building }}">
@@ -54,7 +49,6 @@
 
             </div>
 
-            <!-- 商品情報、購入情報選択エリアで選択した内容を表示するエリア -->
             <div class="purchase-view">
 
                 <div class="price-view">

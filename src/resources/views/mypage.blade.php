@@ -7,7 +7,6 @@
 @section('content')
 <div class="mypage-content">
 
-    <!-- ユーザー情報を表示する部分 -->
     <div class="user-area">
         @if($profile->profile_image)
         <img class="profile-img" src="{{ asset($profile->profile_image) }}" alt="Profile Image">
@@ -20,13 +19,11 @@
         </form>
     </div>
 
-    <!-- ユーザーの出品・購入した商品一覧タブ -->
     <div class="page">
         <a href="/mypage?page=sell" class="sell-item @if($page === 'sell') span @endif">出品した商品</a>
         <a href="/mypage?page=buy" class="buy-item @if($page === 'buy') span @endif">購入した商品</a>
     </div>
 
-    <!-- 出品or購入した商品一覧 -->
     <div class="item-card">
         @if($items->isEmpty())
         <p>該当する商品がありません。</p>

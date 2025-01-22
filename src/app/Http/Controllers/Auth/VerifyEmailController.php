@@ -9,13 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class VerifyEmailController extends Controller
 {
-    // メール確認通知の表示ルート
     public function confirmation()
     {
         return view('auth.verify-email');
     }
 
-    // メール確認処理ルート
     public function __invoke(Request $request, $id)
     {
         $user = User::find($id);
@@ -36,7 +34,6 @@ class VerifyEmailController extends Controller
         abort(403, 'このリンクは無効です');
     }
 
-    // 再送信ルート
     public function resend(Request $request)
     {
         $request->user()->sendEmailVerificationNotification();

@@ -34,7 +34,6 @@ class Test11PaymentTest extends TestCase
 
     public function testPaymentMethodPersistenceWithMock()
     {
-        // Stripe APIをモック
         Http::fake([
             'https://api.stripe.com/*' => Http::response(['status' => 'success'], 200),
         ]);

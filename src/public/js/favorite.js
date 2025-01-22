@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const csrfToken = document.querySelector('meta[name="csrf-token"]'); // CSRFトークン
-    const favoriteButtons = document.querySelectorAll(".favorite-btn"); // お気に入りボタン
+    const csrfToken = document.querySelector('meta[name="csrf-token"]');
+    const favoriteButtons = document.querySelectorAll(".favorite-btn");
 
     // ログイン状態を確認
     const isLoggedIn =
@@ -11,16 +11,14 @@ document.addEventListener("DOMContentLoaded", function () {
     favoriteButtons.forEach((button) => {
         const itemId = button.getAttribute("data-item-id");
         const countElement =
-            button.parentElement.querySelector(".favorite-count"); // 件数を表示している要素
+            button.parentElement.querySelector(".favorite-count");
 
         // 初期状態でお気に入りかどうかをチェックしてSVGアイコンと色を設定
         updateFavoriteState(button);
 
-        // ボタンがクリックされたときの処理
         button.addEventListener("click", function () {
             if (!isLoggedIn) {
-                // ログインしていない場合、ログイン画面にリダイレクト
-                window.location.href = "/login"; // ログイン画面のURLにリダイレクト
+                window.location.href = "/login";
                 return;
             }
 
@@ -46,17 +44,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     return response.json();
                 })
                 .then((data) => {
-                    // ボタンのクラスをトグルしてお気に入り状態を反映
                     button.classList.toggle("favorite", data.isFavorited);
 
-                    // SVGと色を更新
                     updateFavoriteState(button);
 
-                    // お気に入り数を更新
                     if (countElement) {
                         countElement.textContent = data.favoriteCount;
                     } else {
-                        console.log("countElement is not found!"); // countElementが見つからない場合
+                        console.log("countElement is not found!");
                     }
                 })
                 .catch((error) => console.error("Error:", error));

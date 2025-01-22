@@ -9,15 +9,14 @@ document.getElementById("image").addEventListener("change", function (event) {
         reader.onload = function (e) {
             preview.src = e.target.result;
             preview.style.display = "block";
-            previewArea.style.backgroundColor = "transparent"; // 背景色を透明に変更
+            previewArea.style.backgroundColor = "transparent";
         };
 
         reader.readAsDataURL(file);
     } else {
-        // デフォルト画像を表示
         preview.src = preview.dataset.default;
         preview.style.display = "block";
-        previewArea.style.backgroundColor = "transparent"; // 背景色を透明に変更
+        previewArea.style.backgroundColor = "transparent";
     }
 });
 
@@ -27,14 +26,11 @@ document
     .addEventListener("input", function (e) {
         let input = e.target.value;
 
-        // 全角数字を半角数字に変換
         input = input.replace(/[０-９]/g, function (s) {
             return String.fromCharCode(s.charCodeAt(0) - 0xfee0);
         });
 
-        // 全角ハイフン（ー）を半角ハイフン（-）に変換
         input = input.replace(/[ー―‐－]/g, "-");
 
-        // 入力値を更新
         e.target.value = input;
     });

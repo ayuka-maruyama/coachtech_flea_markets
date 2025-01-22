@@ -16,7 +16,6 @@ class Test05MyListTest extends TestCase
 {
     use RefreshDatabase;
 
-    // テスト開始前にusersテーブルのシーディングデータを反映させる
     public function setUp(): void
     {
         parent::setup();
@@ -41,21 +40,16 @@ class Test05MyListTest extends TestCase
         $response = $this->get('/?tab=mylist');
         $response->assertStatus(200);
 
-        // ログインユーザーのお気に入り商品を取得
         $favoriteItems = Item::whereHas('favorite', function ($query) use ($user) {
             $query->where('user_id', $user->user_id);
         })->get();
 
-        // データベースに存在するお気に入り商品数を確認
         $this->assertGreaterThan(0, $favoriteItems->count());
 
-        // レスポンスの内容を確認（表示された商品件数をカウント）
         $responseContent = $response->getContent();
 
-        // レスポンス内で表示された商品の数をカウント（item-nameで商品名が表示されている場合）
         $displayedFavoritesCount = substr_count($responseContent, 'card-top');
 
-        // データベースのお気に入り件数と、表示されるお気に入り件数が一致するか確認
         $this->assertEquals(
             $favoriteItems->count(),
             $displayedFavoritesCount,
@@ -84,14 +78,12 @@ class Test05MyListTest extends TestCase
 
         $response->assertStatus(200);
 
-        // ログインユーザーのお気に入り商品を取得（自分の出品した商品を除く）
         $favoriteItems = Favorite::where('user_id', $user->user_id)
             ->get()
             ->filter(function ($favorite) use ($user) {
                 return $favorite->item->user_id != $user->user_id;
             });
 
-        // 各お気に入りが正しく表示されているかを確認
         foreach ($favoriteItems as $favorite) {
             $response->assertSee($favorite->item->item_name);
         }
@@ -104,7 +96,6 @@ class Test05MyListTest extends TestCase
 
         $response->assertStatus(200);
 
-        // 未認証状態では、空要素が準備されていないか確認
         $response->assertDontSee('<div class="item-card"></div>');
     }
 }

@@ -40,7 +40,6 @@ class Test12DestinationTest extends TestCase
 
         $item = Item::find(3);
 
-        // 変更する送付先データを用意
         $newDestination = Destination::create([
             'user_id' => $user->user_id,
             'item_id' => $item->item_id,
@@ -49,7 +48,6 @@ class Test12DestinationTest extends TestCase
             'building' => 'テストビル101',
         ]);
 
-        // 送付先住所変更リクエストを送信
         $response = $this->post('/purchase/address/' . $item->item_id);
         $response->assertStatus(302);
         $this->assertDatabaseHas('destinations', [
@@ -60,10 +58,8 @@ class Test12DestinationTest extends TestCase
             'building' => 'テストビル101',
         ]);
 
-        // 商品購入画面を表示
         $response = $this->get('/purchase/' . $item->item_id);
 
-        // 画面に変更後の住所が表示されているかを確認
         $response->assertStatus(200);
         $response->assertSee($newDestination['postal_number']);
         $response->assertSee($newDestination['address']);
@@ -78,7 +74,6 @@ class Test12DestinationTest extends TestCase
 
         $item = Item::find(3);
 
-        // 変更する送付先データを用意
         $newDestination = Destination::create([
             'user_id' => $user->user_id,
             'item_id' => $item->item_id,
@@ -87,7 +82,6 @@ class Test12DestinationTest extends TestCase
             'building' => 'テストビル101',
         ]);
 
-        // 送付先変更するデータの登録、登録されているか確認
         $response = $this->post('/purchase/address/' . $item->item_id);
         $response->assertStatus(302);
         $this->assertDatabaseHas('destinations', [
@@ -98,7 +92,6 @@ class Test12DestinationTest extends TestCase
             'building' => 'テストビル101',
         ]);
 
-        // 商品購入画面を表示、送付先変更した住所が表示されているか確認
         $response = $this->get('/purchase/' . $item->item_id);
         $response->assertStatus(200);
 
