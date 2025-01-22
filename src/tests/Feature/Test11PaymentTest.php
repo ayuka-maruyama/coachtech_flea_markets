@@ -5,10 +5,6 @@ namespace Tests\Feature;
 use App\Models\Destination;
 use App\Models\Item;
 use App\Models\User;
-use Database\Seeders\CategoryItemSeeder;
-use Database\Seeders\CategorySeeder;
-use Database\Seeders\CommentSeeder;
-use Database\Seeders\FavoriteSeeder;
 use Database\Seeders\ItemSeeder;
 use Database\Seeders\ProfileSeeder;
 use Database\Seeders\UserSeeder;
@@ -21,7 +17,6 @@ class Test11PaymentTest extends TestCase
 {
     use RefreshDatabase;
 
-    // テスト開始前にusers,itemsテーブルのシーディングデータを反映させる
     public function setUp(): void
     {
         parent::setup();
@@ -44,7 +39,6 @@ class Test11PaymentTest extends TestCase
             'https://api.stripe.com/*' => Http::response(['status' => 'success'], 200),
         ]);
 
-        // テストデータの作成
         $user = User::first();
         $this->actingAs($user);
 
@@ -57,7 +51,7 @@ class Test11PaymentTest extends TestCase
             'building' => 'テストビル101',
         ]);
 
-        // フォーム送信（支払い方法をカードに変更）
+        // フォーム送信（支払い方法をコンビニからカードに変更）
         $response = $this->post(route('purchase.store', ['item_id' => $item->item_id]), [
             'user_id' => $user->user_id,
             'item_id' => $item->item_id,
@@ -69,9 +63,9 @@ class Test11PaymentTest extends TestCase
             'status' => 'pending',
             '_token' => csrf_token(),
         ]);
-        $response->assertRedirect(); // リダイレクトの確認
+        $response->assertRedirect();
 
-        // データベースに保存されていることを確認
+        // データベースに支払方法がカードで保存されていることを確認
         $this->assertDatabaseHas('orders', [
             'user_id' => $user->user_id,
             'item_id' => $item->item_id,
