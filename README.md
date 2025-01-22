@@ -3,6 +3,7 @@
 ## 環境構築  
 ### Dockerビルド  
   1.`git clone https://github.com/ayuka-maruyama/coachtech_flea_markets.git`  
+  2.`cd coachtech_flea_markets`  
   2.`docker-compose up -d --build`  
   
 ### Laravel環境構築  
@@ -21,7 +22,6 @@
     
   STRIPE_KEY=公開可能キーを入力  
   STRIPE_SECRET=シークレットキーを入力  
-  STRIPE_WEBHOOK_SECRET=制限付きのキーのトークンを入力  
   CASHIER_CURRENCY=ja_JP  
   CASHIER_CURRENCY_LOCALE=ja_JP  
   CASHIER_LOGGER=daily  
@@ -39,8 +39,11 @@
   ``` bash
   php artisan key:generate
   ```  
-    
-  6.マイグレーション、シーダーの実行  
+  6.シンボリックリンクの作成  
+  ``` bash
+  php artisan storage:link
+  ```
+  7.マイグレーション、シーダーの実行  
   ``` bash
   php artisan migrate --seed
   ```  
