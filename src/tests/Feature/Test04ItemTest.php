@@ -48,6 +48,9 @@ class Test04ItemTest extends TestCase
     // 購入済み商品に「Sold」が表示される
     public function testItemSoldLabel()
     {
+        $item = Item::first();
+        $item->update(['stock_status' => 1]);
+
         $response = $this->get('/');
 
         $response->assertStatus(200);

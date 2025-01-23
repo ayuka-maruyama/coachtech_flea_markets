@@ -62,6 +62,9 @@ class Test05MyListTest extends TestCase
         $user = User::first();
         $this->actingAs($user);
 
+        $item = Item::find(3);
+        $item->update(['stock_status' => 1]);
+
         $response = $this->get('/?tab=mylist');
         $response->assertStatus(200);
 
