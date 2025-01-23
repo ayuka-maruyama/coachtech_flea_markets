@@ -61,7 +61,7 @@
   ・ nginx 1.26.2  
   
 ## ER図  
-  ![flea_markets_er2](https://github.com/user-attachments/assets/560afd8c-2eae-4729-b320-12dc2d6263f3)  
+  ![Image](https://github.com/user-attachments/assets/323e618c-fca8-4665-89a6-285743fba68c)  
   
 ## その他  
   ### ログインユーザー  
@@ -82,35 +82,11 @@
   `CREATE DATABASE demo_test;`  
   5.データベースの作成確認  
   `SHOW DATABASES;`  
-  6.src/config/database.php内のmysql部分をコピー  
-  7.src/config/database.php内のmysql部分の下にコピーを貼り付け  
-  8.貼り付けを行った内容を次の内容に修正する  
-  ```text
-  'mysql_test' => [
-      'driver' => 'mysql',
-      'url' => env('DB_URL'),
-      'host' => env('DB_HOST', '127.0.0.1'),
-      'port' => env('DB_PORT', '3306'),
-      'database' => env('DB_DATABASE', 'demo_test'),
-      'username' => env('DB_USERNAME', 'root'),
-      'password' => env('DB_PASSWORD', 'root'),
-      'unix_socket' => env('DB_SOCKET', ''),
-      'charset' => env('DB_CHARSET', 'utf8mb4'),
-      'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
-      'prefix' => '',
-      'prefix_indexes' => true,
-      'strict' => true,
-      'engine' => null,
-      'options' => extension_loaded('pdo_mysql') ? array_filter([
-          PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-      ]) : [],
-  ],
-  ```  
-  9.PHPコンテナへログイン  
+  6.PHPコンテナへログイン  
   `docker-compose exec php bash`  
-  10..env.testingファイルを作成  
+  7..env.testingファイルを作成  
   `cp .env.example .env.testing`  
-  11.環境変数を適宜変更  
+  8.環境変数を適宜変更  
   ```text
   APP_ENV=test
   APP_KEY=
@@ -131,9 +107,9 @@
   MAIL_FROM_ADDRESS="info@example.com"
   MAIL_FROM_NAME="${APP_NAME}"
   ```  
-  12.アプリケーションキーの作成  
+  9.アプリケーションキーの作成  
   ``` bash
   php artisan key:generate --env=testing
   ```  
-  13.`php artisan test`でテスト実行
+  10.`php artisan test`でテスト実行
 
