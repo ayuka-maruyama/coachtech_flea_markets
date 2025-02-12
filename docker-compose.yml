@@ -1,8 +1,9 @@
-version: '3.8'
+# 不要になったので削除する
+# version: '3.8'
 
 services:
   nginx:
-    image: nginx:stable
+    image: nginx:1.26.3 # nginx:stableからイメージのバージョンを固定
     ports:
       - "80:80"
     volumes:
@@ -10,16 +11,18 @@ services:
       - ./src:/var/www/
     depends_on:
       - php
-    restart: always
+    # restart: always ローカルでの開発のため削除
 
   php:
-    build: ./docker/php
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
     volumes:
       - ./src:/var/www/
-    restart: always
+    # restart: always ローカルでの開発のため削除
 
   mysql:
-    image: mysql:latest
+    image: mysql:9.2.0 # mysql:latestからイメージのバージョンを固定
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: laravel_db
@@ -28,10 +31,10 @@ services:
     volumes:
       - ./docker/mysql/data:/var/lib/mysql
       - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
-    restart: always
+    # restart: always ローカルでの開発のため削除
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
+    image: phpmyadmin/phpmyadmin:5.2.2
     environment:
       - PMA_ARBITRARY=1
       - PMA_HOST=mysql
@@ -41,11 +44,11 @@ services:
       - mysql
     ports:
       - 8080:80
-    restart: always
+    # restart: always ローカルでの開発のため削除
 
   mailhog:
     container_name: mailhog_flea_markets
     image: mailhog/mailhog:latest
     ports:
       - "8025:8025"
-    restart: always
+    # restart: always ローカルでの開発のため削除
