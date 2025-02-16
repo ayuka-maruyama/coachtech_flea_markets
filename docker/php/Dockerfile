@@ -2,7 +2,7 @@
 FROM php:8.2.27-fpm
 
 # php.iniの設定ファイルをコピー
-COPY php.ini /usr/local/etc/php/
+COPY docker/php/php.ini /usr/local/etc/php/
 
 # 必要なパッケージをインストールし、GDやPDOの拡張を有効にする
 RUN apt-get update && apt-get install -y \
